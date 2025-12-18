@@ -1,0 +1,167 @@
+/* Base wrapper */
+.hero-slider {
+  width: 100%;                  /* 👈 half width */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0 auto;              /* 👈 center horizontally */
+         /* 👈 rounded edges for neat look */
+  overflow: hidden;            /* 👈 hide video overflow */
+}
+
+/* Background video */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* 👈 video fills container */
+                  /* 👈 behind content */
+          /* 👈 match wrapper radius */
+}
+
+/* Inner container with fixed max-width */
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;           /* 👈 limit width for professional look */
+  width: 100%;
+  margin: 0 auto;              /* 👈 center horizontally */
+  padding: 0 3rem;             /* 👈 side spacing inside container */
+  gap: 5.5rem;
+  position: relative;
+  z-index: 1;                  /* 👈 keep content above video */
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 620px;
+  color: #ffd000ff;
+}
+
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.3;
+  margin: 0 0 1.2rem 0;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.title-prefix {
+  color: #ffffffff;
+}
+
+.title-dynamic {
+  color: #808080ff;
+}
+
+.title-cursor {
+  display: inline-block;
+  margin-left: 1px;
+  animation: blink 0.6s infinite;
+  color: #ffffffff;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hero-desc {
+  font-size: 1.075rem;
+  line-height: 1.7;
+  color: #ffffffff;
+  margin-bottom: 3rem;
+}
+
+/* Contact button with shine effect */
+.hero-btn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 22px;
+  color: #ffffffff;        /* 👈 text color */
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 3rem 0;
+  background: transparent; /* 👈 remove white background */
+  border: 2px solid #ffffff; /* 👈 optional: white border for professional look */
+  border-radius: 6px;        /* 👈 neat rounded edges */
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  color: #ffffff;
+  background: #000000ff;   /* 👈 on hover, golden background */
+  border-color: #00eaffff;
+}
+
+
+.hero-btn .shine {
+  position: absolute;
+  top: 0;
+  left: -160%;
+  width: 40%;
+  height: 100%;
+  background: rgba(253, 253, 253, 0.53);
+  transform: skewX(-20deg);
+  transition: left 1.4s ease;
+}
+
+.hero-btn:hover .shine {
+  left: 150%;
+}
+
+.hero-btn:hover {
+  transform: translateY(-1px) scale(1);
+}
+
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Right column: image (optional if you still want image beside video) */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-title { font-size: 2.3rem; }
+  .hero-content { padding-left: 2rem; }
+  .hero-desc { font-size: 1rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .hero-content {
+    max-width: 100%;
+    padding-left: 0;
+  }
+  .hero-title { font-size: 2rem; }
+  .hero-image img {
+    max-width: 100%;
+  }
+}

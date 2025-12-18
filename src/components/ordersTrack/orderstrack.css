@@ -1,0 +1,143 @@
+/* Root section: deep, neutral, professional */
+.orders-track {
+  position: relative;
+  padding: 96px 32px;
+  background: #0b1220; /* deep charcoal navy */
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #e5edf5;      /* soft off-white */
+  overflow: hidden;
+}
+
+/* Container */
+.ot-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.ot-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.ot-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #135858ff, #ffffffff); /* subtle steel → ice blue */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ot-desc {
+  font-size: 1.06rem;
+  color: #9fb1c6; /* refined slate-blue */
+  max-width: 720px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+}
+
+/* CTA: solid professional blue */
+.ot-actions .ot-cta {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #ffffffff; /* professional blue */
+  color: #000000ff;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.ot-actions .ot-cta:hover {
+  background: #000000ff;
+    color: #ffffffff;
+  box-shadow: 0 1px 24px rgba(255, 255, 255, 0.65);
+
+  transform: translateY(-2px);
+}
+
+/* Grid */
+.ot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+/* Card: subtle glass overlay, crisp border */
+.ot-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+  border: 1px solid rgba(199, 214, 231, 0.14); /* cool neutral border */
+  border-radius: 16px;
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 10px 28px rgba(5, 10, 20, 0.4);
+}
+.ot-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(5, 10, 20, 0.5);
+  border-color: rgba(199, 214, 231, 0.22);
+}
+
+/* Number: high contrast, subtle gradient—not flashy */
+.ot-number {
+  font-size: 2.9rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ffffff, #dfe9f5); /* refined white → ice tint */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+/* Label: muted, readable */
+.ot-label {
+  font-size: 0.98rem;
+  color: #b6c6d9; /* muted cool neutral */
+  line-height: 1.45;
+}
+
+/* Decorative background glows: restrained, professional */
+.orders-track::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -140px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(67, 181, 198, 0.22), transparent 70%); /* soft teal glow */
+  filter: blur(120px);
+  z-index: 0;
+}
+.orders-track::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  right: -140px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(62, 124, 226, 0.22), transparent 70%); /* soft blue glow */
+  filter: blur(130px);
+  z-index: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ot-card,
+  .ot-actions .ot-cta {
+    transition: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .ot-title { font-size: 2.2rem; }
+  .ot-number { font-size: 2.4rem; }
+}
+@media (max-width: 560px) {
+  .orders-track { padding: 60px 20px; }
+  .ot-title { font-size: 1.8rem; }
+  .ot-number { font-size: 2rem; }
+  .ot-card { padding: 22px 18px; }
+}
