@@ -1,35 +1,50 @@
+/* =========================
+   Navbar.css — Updated full file
+   ========================= */
+
+/* GLOBAL BOX-SIZING */
+* { box-sizing: border-box; }
+
 /* NAV CONTAINER */
 .nav-container {
   width: 100%;
-  background: #00000085;
-  color: white;
+  background: #ffffff;
+  color: #000;
   display: flex;
   align-items: center;
   padding: 0 1.9rem;
   position: fixed;
   top: 0;
   z-index: 999;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   height: 72px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.27);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* LOGO */
 .logo {
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 700;
   flex-shrink: 0;
+  color: #000;
+}
+.logo a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* NAV LINKS */
 .nav-links {
   display: flex;
-  gap: 26px;
+  gap: 36px;
   list-style: none;
   align-items: center;
   flex-grow: 1;
   justify-content: center;
   padding: 0;
+  color: #000;
+  font-size: 1.125rem; /* ~18px */
   margin: 0;
 }
 
@@ -37,11 +52,15 @@
 .nav-item {
   position: relative;
   cursor: pointer;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 18px;
   white-space: nowrap;
   transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.nav-item:hover { color: #ffffffff; }
+.nav-item:hover { color: #8d0b0b; }
 .nav-item::after {
   content: "";
   position: absolute;
@@ -49,7 +68,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg,black);
+  background: linear-gradient(90deg,#000 0%, #000 100%);
   transition: width 220ms ease;
 }
 .nav-item:hover::after { width: 100%; }
@@ -60,48 +79,85 @@
   gap: 16px;
   align-items: center;
 }
+
+/* Generic link reset inside navbar to avoid browser defaults */
+.nav-container a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+/* SEARCH BUTTON */
 .search-btn {
   padding: 8px 14px;
   background: transparent;
-  border: 1.5px solid #3ea6ff;
-  color: #3ea6ff;
+  border: 1.5px solid #000;
+  color: #000;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
 }
 .search-btn:hover { background: #3ea6ff; color: black; }
 
+/* TALK BUTTON - prefer using <Link class="talk-btn"> or <button onClick={navigate}> */
 .talk-btn {
   position: relative;
   overflow: hidden;
-  padding: 10px 18px;
+  padding: 12px 26px;
   color: #fff;
   background: #000;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
+
+/* If talk-btn is an anchor (<a> or Link), ensure it inherits button styles */
+.talk-btn,
+.talk-btn:link,
+.talk-btn:visited,
+.talk-btn:hover,
+.talk-btn:active,
+.talk-btn:focus {
+  color: #fff;
+  text-decoration: none;
+  background: #000;
+}
+
+/* Stronger override in case global anchor rules exist */
+.nav-container .talk-btn,
+.nav-container .talk-btn a {
+  color: #fff !important;
+  text-decoration: none !important;
+  background: #000 !important;
+}
+
+/* Hover/focus states */
+.talk-btn:hover,
+.talk-btn:focus {
+  color: #3ea6ff;
+  background: #020202;
+  box-shadow: 0 8px 24px rgba(62,166,255,0.08);
+  transform: translateY(-2px);
+}
+
+/* If you want a subtle inner shine effect */
 .talk-btn .shine {
   position: absolute;
-  top: 0;
-  left: -160%;
-  width: 150%;
-  height: 100%;
-  background: #fff;
-  transform: skewX(-20deg);
-  transition: left 1.2s ease;
-}
-.talk-btn:hover .shine { left: 150%; }
-.talk-btn:hover { transform: translateY(-2px) scale(1.03); }
-.talk-btn::before {
-  content: "";
-  position: absolute;
   inset: 0;
-  border-radius: 8px;
-  border: 1px solid #ff3e3e;
   pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 220ms ease;
 }
+.talk-btn:hover .shine { opacity: 1; }
 
 /* HAMBURGER */
 .hamburger {
@@ -116,7 +172,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: #dff4ff;
+  background: #000;
   margin: 4px 0;
   border-radius: 2px;
   transition: transform 180ms ease, opacity 180ms ease;
@@ -166,109 +222,190 @@
   .nav-container { padding: 0 10px; height: auto; }
 }
 
-/* GLOBAL BOX-SIZING */
-* { box-sizing: border-box; }
+/* =========================
+   Compact dropdown styles (fixed arrow overlap)
+   ========================= */
 
-/* ========== DROPDOWN MENU ========== */
-.dropdown { position: relative; }
+/* Base dropdown container (inline for desktop) */
+.dropdown { position: relative; display: inline-block; }
 
+/* Toggle button inside nav-item (keeps layout consistent) */
+.dropdown-toggle {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Small chevron */
+.dropdown-toggle .chev { font-size: 12px; opacity: 0.9; }
+
+/* Compact dropdown card (centered under trigger) */
 .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px) scale(0.995);
+  min-width: 200px;
+  max-width: 320px;
+  background: #0b0e11; /* dark card */
+  color: #fefefe;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 30px rgba(2,8,20,0.06);
+  border: 1px solid rgba(255,255,255,0.04);
   opacity: 0;
   visibility: hidden;
-  position: fixed;
-  top: 72px;
-  left: 0;
-  width: 100vw;
-  background: rgba(47, 51, 55, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  padding: 32px 48px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  z-index: 999;
-  transform: translateY(14px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
+  z-index: 1200;
+  backdrop-filter: blur(12px);
 }
 
 /* Show dropdown */
-.dropdown:hover .dropdown-menu,
 .dropdown-menu.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
-/* Column headings */
+/* Column heading */
 .dropdown-menu .column h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 15px;
+  margin: 0 0 8px 0;
   color: #3ea6ff;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding-bottom: 6px;
+  font-weight: 700;
 }
 
-/* List items */
-.dropdown-menu .column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.dropdown-menu .column ul li {
-  padding: 8px 0;
-  font-size: 15px;
-  color: #c9c9c9ff;
+/* List inside dropdown: reserve space for arrow to avoid overlap */
+.dropdown-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dropdown-menu li {
+  position: relative;            /* needed for absolute ::before */
+  padding: 8px 10px 8px 34px;    /* left padding reserves space for arrow */
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.25s ease, transform 0.25s ease;
-  position: relative;
+  transition: background 140ms ease, transform 140ms ease;
 }
+.dropdown-menu li a { color: inherit; text-decoration: none; display: block; width: 100%; }
+
+/* arrow: absolute, vertically centered, no overlap */
 .dropdown-menu .column ul li::before {
   content: "›";
   position: absolute;
-  left: -16px;
-  color: #ffffffff;
+  left: 12px;                    /* distance from left edge of li */
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  color: rgba(255,255,255,0.18);
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.dropdown-menu .column ul li:hover {
-  color: #fff;
-  transform: translateX(4px);
-}
-.dropdown-menu .column ul li:hover::before {
-  opacity: 1;
-  transform: translateX(2px);
+  transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
 }
 
-/* MOBILE DROPDOWN */
-@media (max-width: 1200px) {
+/* hover/focus: reveal arrow and subtle motion */
+.dropdown-menu .column ul li:hover::before,
+.dropdown-menu .column ul li:focus::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  color: #3ea6ff;
+}
+
+/* hover/focus item */
+.dropdown-menu li:hover,
+.dropdown-menu li:focus {
+  background: rgba(62,166,255,0.06);
+  transform: translateX(6px);
+  outline: none;
+}
+
+/* Divider */
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.04);
+  margin: 8px 0;
+  border-radius: 2px;
+}
+
+/* MOBILE: full width stacked under navbar */
+@media (max-width: 900px) {
   .dropdown-menu {
     position: static;
-    box-shadow: none;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding: 0;
-    border-radius: 0;
-    transition: none;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .dropdown-menu .column h4 {
-    color: #fff;
-    margin: 10px 14px 6px;
-    border-bottom: none;
-  }
-  .dropdown-menu .column ul li {
-    padding: 10px 14px;
-    color: #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .dropdown-menu .column ul li:hover {
-    background: rgba(255,255,255,0.05);
-    color: #3ea6ff;
     transform: none;
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    max-width: none;
+    padding: 6px 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
   }
+  .dropdown-toggle { width: 100%; justify-content: space-between; padding: 10px 14px; }
+  .dropdown-menu .column h4 { color: #fff; margin: 6px 14px; }
+  .dropdown-menu li { padding: 10px 14px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.04); transform: none; }
+  .dropdown-menu li:hover { background: rgba(255,255,255,0.03); color: #3ea6ff; }
 }
+
+/* =========================
+   Search bar & results (optional)
+   ========================= */
+.search {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+/* If you use a floating search bar */
+.search-bar {
+  position: absolute;
+  top: 72px;
+  right: 20px;
+  background: #111;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+.search-bar input {
+  width: 220px;
+  padding: 8px;
+  border: 1px solid #3ea6ff;
+  border-radius: 6px;
+  background: #000;
+  color: #fff;
+}
+.search-results {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.search-results li {
+  padding: 6px 8px;
+  color: #c9c9c9;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.search-results li:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* small utility */
+.column { display: block; }
+.column ul { margin: 0; padding: 0; }
+
+/* End of file */

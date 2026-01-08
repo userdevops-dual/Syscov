@@ -1,15 +1,22 @@
 /* SLIDE CONTAINER */
 .slidebar-section {
-  padding: 60px 20px;
-  background: #000000ff;
+  padding: 10px ;
   text-align: center;
+  border: none;    
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        margin-bottom: none;  
+        background-color: #000000ff;   /* Black heading text */
+  box-shadow: none; 
 }
 
 .slidebar-heading {
-  font-size: 22px;
-  font-weight: 600;
-  color: #ffffffff;
-  margin-bottom: 40px;
+  font-size: 40px;
+  font-weight: 800;
+  color:;
+   
+   margin-top: 0px;
+    margin-bottom: 0px;
+  /* Black heading text */
 }
 
 /* SLIDER TRACK */
@@ -21,8 +28,8 @@
 
 .slider-track {
   display: flex;
-  gap: 40px;
-  animation: scroll 40s linear infinite;
+  gap: 20px;
+  animation: scroll 30s linear infinite;
 }
 
 /* INDIVIDUAL SLIDE */
@@ -34,10 +41,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.03);
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    color: #ffffffff;
+
+  /* Light gray background for contrast */
   transition: transform 0.3s ease;
 }
 .slide:hover {
@@ -50,20 +56,21 @@
   max-height: 50px;
   object-fit: contain;
   margin-bottom: 8px;
-  filter: brightness(0) invert(1);
+  color:white;
+  filter: brightness(1.5);   /* Force logos to appear black */
 }
 
 /* LOGO NAME */
 .slide p {
   font-size: 14px;
-  color: #dff4ff;
+  color: #ffffffff;
   margin: 0;
 }
 
 /* SCROLL ANIMATION */
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 
 /* RESPONSIVE */
@@ -72,3 +79,5 @@
   .slide { width: 100px; height: 80px; }
   .slide img { max-width: 80px; max-height: 40px; }
 }
+
+   

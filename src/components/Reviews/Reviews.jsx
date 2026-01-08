@@ -1,29 +1,33 @@
 import React from 'react';
 import './Reviews.css';
 
+// 👇 Import local images
+import r1 from './r1.jpg';
+import r2 from './r2.jpg';
+import r3 from './r3.webp';
+
 const reviewsData = [
   {
-    logo: '/assets/cavago-logo.png',
+    logo: r1,
     company: 'Cavago',
-    text: `Working with the Arbisoft design team on the new Host App redesign for Cavago has been, and continues to be, a truly pleasurable experience...`,
+    text: `Working with the Syscov company design team on the new Host App redesign for Cavago has been, and continues to be, a truly pleasurable experience...`,
     author: 'Sophie Clark',
     role: 'Head of Product at Cavago',
   },
   {
-    logo: '/assets/eileen-logo.png',
+    logo: r2,
     company: 'Eileen',
-    text: `The Arbisoft team has been reliable, responsive, and excellent to work with while developing our full stack MVP.`,
+    text: `The Syscov team has been reliable, responsive, and excellent to work with while developing our full stack MVP.`,
     author: 'Jordan Karcher',
     role: 'CEO, Eileen',
   },
   {
-    logo: '/assets/eileen-logo.png',
+    logo: r3,
     company: 'Eileen',
-    text: `Arbisoft has been a tremendous partner to us. They took complex ideas, plain English documentation, wireframed product specs, and built a fully functioning product...`,
+    text: `Syscov has been a tremendous partner to us. They took complex ideas, plain English documentation, wireframed product specs, and built a fully functioning product...`,
     author: 'Michael Lorenzen',
     role: '',
   },
-  
 ];
 
 const Reviews = () => {

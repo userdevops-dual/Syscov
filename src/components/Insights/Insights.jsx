@@ -4,7 +4,7 @@ import './Insights.css';
 const insightsData = [
   {
     step: "Discovery & Planning",
-    description: "We start by deeply understanding your business goals, challenges, and requirements. Our team collaborates with you to define clear objectives and a roadmap.",
+    description: "We  deeply understand your business goals, challenges, and requirements. Our team collaborates with you to define clear objectives and a roadmap.",
     icon: "📊"
   },
   {

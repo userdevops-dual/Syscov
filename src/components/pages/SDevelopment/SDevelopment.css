@@ -1,0 +1,321 @@
+/* CustomSoftware.css
+   Cleaned, corrected, and consistent styles for CustomSoftware.jsx
+   Scoped under .csd-container to avoid leaking styles
+*/
+
+/* Root */
+.csd-container {
+  background: #ffffff;
+  color: #000;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+}
+
+/* Constrain width */
+.csd-container .container-max {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top:40px;
+}
+
+/* HERO */
+.csd-hero {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 28px;
+  align-items: center;
+  padding: 34px;
+  border-radius: 14px;
+  background: #000; /* black hero */
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(16,18,40,0.18);
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-top: 40px;
+}
+
+.csd-hero-left { /* ensure left column spacing if needed */
+  min-width: 0;
+}
+
+.csd-hero-title {
+  margin: 0 0 10px 0;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.csd-hero-sub {
+  margin: 0 0 14px 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  max-width: 60ch;
+}
+
+/* Hero actions */
+.csd-hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Generic action element (no <button>) */
+.csd-container .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Primary action */
+.csd-container .action-primary,
+.csd-container .action[data-variant="primary"] {
+  background:black;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(92,195,255,0.12);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Outline action */
+.csd-container .action-outline,
+.csd-container .action[data-variant="outline"] {
+  background: transparent;
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Hover */
+.csd-container .action:hover,
+.csd-container .action:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(16,18,40,0.28);
+  opacity: 0.98;
+  outline: none;
+}
+
+/* action icon */
+.csd-container .action-icon,
+.csd-container .action .action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.86);
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Quick stats (aside) */
+.csd-hero-right .csd-quick {
+  display: grid;
+  gap: 12px;
+}
+.csd-hero-right .quick-item {
+  background: rgba(0, 0, 0, 1);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+.csd-hero-right .quick-num {
+  font-weight: 800;
+  font-size: 18px;
+}
+.csd-hero-right .quick-label {
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+}
+
+/* Section title (shared) */
+.csd-container .section-title {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #000000ff;
+}
+
+/* Capabilities grid */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* capability card */
+.cap.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(7,18,51,0.04);
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+}
+.cap-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background:black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+.cap.card h3 {
+  margin: 10px 0 6px 0;
+  font-size: 16px;
+  color: #071233;
+}
+.cap.card p {
+  margin: 0 0 10px 0;
+  color: #475569;
+  font-size: 14px;
+}
+.cap-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cap-list li {
+  background: #f1f7ff;
+  color: #071233;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(7,18,51,0.04);
+}
+
+/* Process steps */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.proc {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(7,18,51,0.04);
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+}
+.proc-num {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: black;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+/* Showcase */
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.show-card {
+  background: linear-gradient(180deg,#ffffff,#f8fbff);
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.03);
+  text-align: center;
+  font-weight: 800;
+  color: #071233;
+}
+
+/* How we work compact */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.how {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.04);
+  text-align: center;
+}
+.how-step {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 8px auto;
+  border-radius: 50%;
+  background: black;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+/* How CTA */
+.how-cta {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+.how-cta .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.how-cta .action-primary {
+  background: linear-gradient(90deg,#ff8a6b,#ff6b5f);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(255,107,95,0.12);
+}
+.how-cta .action-outline {
+  background: transparent;
+  color: #071233;
+  border: 1px solid rgba(7,18,51,0.06);
+}
+
+/* Small accessibility / focus styles */
+.csd-container .action:focus {
+  box-shadow: 0 0 0 4px rgba(92,195,255,0.12);
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .show-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+  .csd-hero { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .csd-container { padding: 20px 14px; gap: 20px; }
+  .cap-grid, .process-steps, .show-grid, .how-grid { grid-template-columns: 1fr; }
+  .csd-hero-right { order: 2; }
+  .csd-hero-left { order: 1; }
+  .csd-hero-actions .action { width: 100%; justify-content: center; }
+  .how-cta .action { width: 100%; justify-content: center; }
+}

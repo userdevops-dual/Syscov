@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./orderstrack.css";
+import { Link } from "react-router-dom";
 
 // Custom hook for smooth counter animation
 function useCountUp(target, active, duration = 3000) {
@@ -58,23 +59,23 @@ export default function OrdersTrack() {
 
   // Metrics data
   const metrics = [
-    { label: "Global clients served", target: 1000, suffix: "+", duration: 3500 },
-    { label: "Reduction in cost", target: 65, suffix: "%", duration: 3000 },
-    { label: "Consumers served globally", target: 300, suffix: "M+", duration: 4000 },
-    { label: "Growth in customer retention", target: 40, suffix: "%", duration: 3000 },
+    { label: "Global clients served", target: 1000, suffix: "+", duration: 2500 },
+    { label: "Reduction in cost", target: 65, suffix: "%", duration: 2500 },
+    { label: "Consumers served globally", target: 300, suffix: "M+", duration: 2500 },
+    { label: "Growth in customer retention", target: 40, suffix: "%", duration: 2500 },
   ];
 
   return (
     <section className="orders-track" ref={sectionRef} aria-labelledby="orders-track-title">
       <div className="ot-container">
         <div className="ot-header">
-          <h2 id="orders-track-title" className="ot-title">Delivering Results that Matter</h2>
+          <h2 id="orders-track-title" className="ot-title">Delivering Results that Matter --</h2>
           <p className="ot-desc">
             Our solutions have transformed industries and driven measurable growth, establishing us amongst globally
             leading software development firms.
           </p>
           <div className="ot-actions">
-            <a href="#contact" className="ot-cta">Contact Us</a>
+            <a href="#contact" className="ot-cta"><Link to="./contact">Contact Us</Link></a>
           </div>
         </div>
 

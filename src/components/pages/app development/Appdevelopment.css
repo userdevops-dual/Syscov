@@ -1,0 +1,359 @@
+/* src/components/pages/AppDevelopment.css
+   Corrected styles to prevent text overlap and ensure responsive behavior
+   Scoped to .appdev-container (class-only selectors)
+*/
+
+/* Page root */
+.appdev-container {
+  background: linear-gradient(180deg,#f7fbff,#ffffff);
+  color: #0b1220;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 1.45;
+}
+
+/* Constrain width */
+.appdev-container .container-max {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* HERO */
+.appdev-container .hero {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+  padding: 36px;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+  margin-top: 40px;
+  box-shadow: 0 20px 60px rgba(7,18,51,0.16);
+  border: 1px solid rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+/* Allow children to shrink inside grid/flex */
+.appdev-container .hero-left,
+.appdev-container .hero-right,
+.appdev-container .hero-left * {
+  min-width: 0;
+}
+
+/* Titles and paragraphs */
+.appdev-container .hero-title {
+  margin: 0 0 12px 0;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.05;
+}
+
+.appdev-container .hero-sub {
+  margin: 0 0 18px 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  max-width: 60ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.45;
+}
+
+/* Hero actions container */
+.appdev-container .hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Generic action element (no <button>) */
+.appdev-container .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+  min-width: 0;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Primary action (visible on dark hero) */
+.appdev-container .action-hero,
+.appdev-container .action[data-variant="hero"] {
+  background: linear-gradient(90deg,#00b7ff,#00e0c6);
+  color: #071233;
+  box-shadow: 0 10px 30px rgba(3,10,18,0.28);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Ghost / secondary action */
+.appdev-container .action-ghost,
+.appdev-container .action[data-variant="ghost"] {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: none;
+}
+
+/* Hover / focus for actions */
+.appdev-container .action:hover,
+.appdev-container .action:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(3,10,18,0.32);
+  opacity: 0.98;
+  outline: none;
+}
+
+/* Icon inside actions */
+.appdev-container .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.12);
+  color: #071233;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Stats card on the right */
+.appdev-container .hero-right .stats {
+  display: grid;
+  gap: 12px;
+}
+.appdev-container .stat {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+  border-radius: 10px;
+  min-width: 0;
+}
+.appdev-container .stat-num {
+  font-weight: 800;
+  font-size: 18px;
+}
+.appdev-container .stat-label {
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+}
+
+/* Categories */
+.appdev-container .categories .section-title {
+  margin-bottom: 12px;
+  color: #071233;
+}
+.appdev-container .category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* Card style for categories (dark theme) */
+.appdev-container .card-glass {
+  background: linear-gradient(180deg,#0b0b0b,#0f0f0f);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 12px 30px rgba(7,18,51,0.06);
+  color: #fff;
+  overflow: hidden;
+}
+.appdev-container .cat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#00b7ff,#00e0c6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #071233;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.appdev-container .category h3 {
+  margin: 8px 0 6px 0;
+  font-size: 16px;
+  color: #fff;
+  word-break: break-word;
+}
+.appdev-container .cat-desc {
+  margin: 0 0 12px 0;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  overflow-wrap: break-word;
+}
+
+/* Tech badges */
+.appdev-container .tech-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.appdev-container .tech-list li {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Process timeline (light cards for readability) */
+.appdev-container .process .section-title {
+  margin-bottom: 12px;
+  color: #071233;
+}
+.appdev-container .process-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.appdev-container .step {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(7,18,51,0.04);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+}
+.appdev-container .step-dot {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+/* Showcase */
+.appdev-container .show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.appdev-container .show-card {
+  background: linear-gradient(180deg,#ffffff,#f8fbff);
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.03);
+  text-align: center;
+  font-weight: 800;
+  color: #071233;
+}
+
+/* How we work */
+.appdev-container .how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.appdev-container .how-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.04);
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+}
+.appdev-container .how-num {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+/* How CTA area */
+.appdev-container .how-cta {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+}
+.appdev-container .how-cta .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.appdev-container .how-cta .action-hero,
+.appdev-container .how-cta .action[data-variant="hero"] {
+  background: linear-gradient(90deg,#ff6b5f,#ff8a6b);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(255,107,95,0.12);
+}
+.appdev-container .how-cta .action-ghost,
+.appdev-container .how-cta .action[data-variant="ghost"] {
+  background: transparent;
+  color: #071233;
+  border: 1px solid rgba(7,18,51,0.06);
+}
+
+/* Accessibility focus */
+.appdev-container .action:focus {
+  box-shadow: 0 0 0 4px rgba(0,183,255,0.12);
+  outline: none;
+}
+
+/* Responsive fixes to avoid overlap */
+@media (max-width: 1000px) {
+  .appdev-container .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .appdev-container .process-timeline { grid-template-columns: repeat(2, 1fr); }
+  .appdev-container .show-grid { grid-template-columns: repeat(2, 1fr); }
+  .appdev-container .how-grid { grid-template-columns: repeat(2, 1fr); }
+  .appdev-container .hero { grid-template-columns: 1fr; }
+  .appdev-container .hero-sub { max-width: 100%; }
+}
+
+@media (max-width: 520px) {
+  .appdev-container { padding: 20px 14px; gap: 20px; }
+  .appdev-container .category-grid,
+  .appdev-container .process-timeline,
+  .appdev-container .how-grid,
+  .appdev-container .show-grid { grid-template-columns: 1fr; }
+  .appdev-container .hero-right { order: 2; }
+  .appdev-container .hero-left { order: 1; }
+  .appdev-container .hero-actions .action,
+  .appdev-container .how-cta .action { width: 100%; justify-content: center; white-space: normal; }
+  .appdev-container .hero-title { line-height: 1.1; }
+}

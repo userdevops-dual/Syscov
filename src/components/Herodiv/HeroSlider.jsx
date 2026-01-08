@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./HeroSlider.css";
+import r11 from "./r11.jpg"; // adjust path if image is elsewhere
+import { Link } from "react-router-dom";
 
 const slides = [
   {
     titlePrefix: "The world is",
-    typingWords: ["creating", "dying", "absorbing"],
+    typingWords: ["creating...", "dying...", "absorbing..."],
     description:
       "We are a leading software development company engineering next-generation digital solutions, embedding AI and data-driven intelligence into workflows that fuel efficiency and unlock new growth opportunities.",
     button: "Let's Talk Business",
@@ -14,6 +16,7 @@ const slides = [
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // auto-advance (if multiple slides added later)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -26,15 +29,19 @@ export default function HeroSlider() {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // reset typing when slide changes
   useEffect(() => {
     setWordIndex(0);
     setDisplayText("");
     setIsDeleting(false);
   }, [currentSlide]);
 
+  // typing effect
   useEffect(() => {
-    const currentWord = words[wordIndex];
+    const currentWord = words[wordIndex] || "";
     const typingSpeed = isDeleting ? 60 : 120;
+
+    let timeoutId = null;
 
     const tick = () => {
       if (!isDeleting && displayText.length < currentWord.length) {
@@ -42,55 +49,49 @@ export default function HeroSlider() {
       } else if (isDeleting && displayText.length > 0) {
         setDisplayText(currentWord.slice(0, displayText.length - 1));
       } else if (!isDeleting && displayText.length === currentWord.length) {
-        setTimeout(() => setIsDeleting(true), 700);
+        // pause then start deleting
+        timeoutId = setTimeout(() => setIsDeleting(true), 700);
       } else if (isDeleting && displayText.length === 0) {
         setIsDeleting(false);
         setWordIndex((prev) => (prev + 1) % words.length);
       }
     };
 
-    const timer = setTimeout(tick, typingSpeed);
-    return () => clearTimeout(timer);
+    timeoutId = setTimeout(tick, typingSpeed);
+    return () => clearTimeout(timeoutId);
   }, [displayText, isDeleting, wordIndex, words]);
 
-  // Slow down video playback
+  // slow background video if any (optional)
   useEffect(() => {
     const video = document.querySelector(".hero-video");
-    if (video) {
-      video.playbackRate = 0.9; // 👈 slow motion effect
-    }
+    if (video) video.playbackRate = 0.9;
   }, []);
 
   const { titlePrefix, description, button } = slides[currentSlide];
 
   return (
-    <div className="hero-slider">
-      {/* Background Video from public folder */}
-      <video
-        className="hero-video"
-        src="/heroVideo.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-
+    <section className="hero-slider" aria-label="Hero section">
       <div className="hero-inner">
         <div className="hero-content">
           <h1 className="hero-title">
             <span className="title-prefix">{titlePrefix}&nbsp;</span>
             <span className="title-dynamic">{displayText}</span>
-            <span className="title-cursor">|</span>
+            <span className="title-cursor" aria-hidden="true">|</span>
           </h1>
 
           <p className="hero-desc">{description}</p>
 
-          <button id="contact-btn" className="hero-btn">
+          {/* Link used as button to avoid nested <a> or button default styles */}
+          <Link to="/contact" className="hero-btn" aria-label="Contact us">
             {button}
-            <span className="shine"></span>
-          </button>
+            <span className="shine" />
+          </Link>
+        </div>
+
+        <div className="hero-image" aria-hidden="true">
+          <img src={r11} alt="Hero visual" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

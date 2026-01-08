@@ -3,17 +3,14 @@ import "./Slidebar.css";
 
 
 const logos = [
-  { name: "uniliver", src: "./logo/uniliver.png" },
-  { name: "Nestlé", src: "/logo/nestle.png" },
-  { name: "Microsoft", src: "/logo/microsoft.png" },
-  { name: "Google", src: "/logo/google.png" },
-  { name: "Amazon", src: "/logo/amazon.png" },
-  { name: "Intel", src: "/logo/intel.png" },
-  { name: "Cisco", src: "/logo/cisco.png" },
-  { name: "Oracle", src: "/logo/oracle.png" },
-  { name: "Samsung", src: "/logo/samsung.png" },
-  { name: "Apple", src: "/logo/apple.png" },    
-  { name: "Dell", src: "/logo/dell.png" },
+  {  src: "./logo/uniliver.png" },
+  {  src: "/logo/microsoft.png" },
+  {  src: "/logo/google.png" },
+  {  src: "/logo/amazon.png" },
+  {  src: "/logo/intel.png" },
+  {  src: "/logo/cisco.png" },
+  { src: "/logo/oracle.png" },
+  { src: "/logo/dell.png" },
  
 ];
 
@@ -21,9 +18,7 @@ export default function Slidebar() {
   return (
     <section className="slidebar-section">
       {/* Tagline */}
-      <h2 className="slidebar-heading">
-        Empowering growth through collective expertise and a trusted partner ecosystem
-      </h2>
+      
 
       {/* Logo Slider */}
       <div className="slider">

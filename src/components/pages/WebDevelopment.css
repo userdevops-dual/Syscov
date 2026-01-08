@@ -1,0 +1,476 @@
+/* src/components/pages/WebDevelopment.css
+   Full CSS including both How We Work sections (how-we-work and how-we-work-2)
+   Class-only selectors, scoped under .webdev-container
+*/
+
+/* Base container */
+.webdev-container {
+  background: #fbf8f3;
+  color: #0b1220;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 1.45;
+}
+
+/* Constrain width */
+.webdev-container .container-max {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Section title shared */
+.webdev-container .section-title {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  color: #071233;
+}
+
+/* HERO */
+.webdev-container .hero {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+  background: #0b0b0b;
+  color: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(6,30,63,0.06);
+  overflow: hidden;
+}
+
+/* allow grid children to shrink to avoid overlap */
+.webdev-container .hero > * { min-width: 0; }
+
+.webdev-container .hero-title {
+  margin: 0 0 10px 0;
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 800;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.05;
+}
+
+.webdev-container .hero-desc {
+  margin: 0 0 16px 0;
+  color: #cbd5e1;
+  font-size: 15px;
+  max-width: 70ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.45;
+}
+
+.webdev-container .hero-aside {
+  background: linear-gradient(180deg,#ffffff,#f7fbff);
+  padding: 16px;
+  border-radius: 10px;
+  color: #071233;
+  box-shadow: 0 8px 20px rgba(7,18,51,0.06);
+  min-width: 0;
+}
+
+/* Categories grid */
+.webdev-container .category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* Single category card */
+.webdev-container .category {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.04);
+  box-shadow: 0 8px 20px rgba(7,18,51,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 140px;
+  box-sizing: border-box;
+}
+.webdev-container .category h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #071233;
+  word-break: break-word;
+}
+.webdev-container .cat-desc {
+  margin: 0 0 12px 0;
+  color: #556070;
+  font-size: 13px;
+  overflow-wrap: break-word;
+}
+
+/* Tech list (badges) */
+.webdev-container .tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px 0;
+  padding: 0;
+  list-style: none;
+}
+.webdev-container .tech-list .tech {
+  background: linear-gradient(90deg,#f1f7ff,#ffffff);
+  color: #0b1220;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid rgba(7,18,51,0.04);
+  white-space: nowrap;
+}
+
+/* Category features (small tags) */
+.webdev-container .cat-features {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.webdev-container .cat-features span {
+  font-size: 12px;
+  color: #475569;
+  background: rgba(7,18,51,0.03);
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+/* Features grid */
+.webdev-container .features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.webdev-container .feature {
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.03);
+  box-shadow: 0 8px 20px rgba(7,18,51,0.04);
+}
+.webdev-container .feature h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #071233;
+}
+.webdev-container .feature p {
+  margin: 0;
+  color: #556070;
+  font-size: 14px;
+}
+
+/* Showcase */
+.webdev-container .project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.webdev-container .project {
+  background: linear-gradient(180deg,#ffffff,#f8fbff);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(7,18,51,0.03);
+  text-align: center;
+  font-weight: 700;
+  color: #071233;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CTA */
+.webdev-container .cta {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(7,18,51,0.03);
+}
+.webdev-container .cta h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #071233;
+}
+.webdev-container .cta p {
+  margin: 0 0 12px 0;
+  color: #556070;
+}
+
+/* CTA button */
+.webdev-container .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #ffffffff;
+  color: #000000ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255,107,95,0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.webdev-container .cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(7,18,51,0.12);
+}
+
+/* How we work section (primary) */
+.webdev-container .how-we-work {
+  box-sizing: border-box;
+  line-height: 1.45;
+  padding: 28px;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-radius: 12px;
+  border: 1px solid rgba(7,18,51,0.03);
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+  overflow: visible;
+}
+
+/* Ensure children can shrink so long text wraps instead of overflowing */
+.webdev-container .how-we-work > * {
+  min-width: 0;
+}
+
+/* Grid of steps with consistent gaps and alignment */
+.webdev-container .how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* Individual step card: reserve vertical space and allow wrapping */
+.webdev-container .how-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.03);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  min-height: 120px;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* Step number circle fixed size and non-shrinking */
+.webdev-container .step-num {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Step body layout and text wrapping */
+.webdev-container .step-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.webdev-container .step-body h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #071233;
+  line-height: 1.15;
+  word-break: break-word;
+}
+.webdev-container .step-body p {
+  margin: 0;
+  color: #556070;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+/* CTA row: allow wrapping so buttons never overlap text */
+.webdev-container .how-cta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* Small CTA buttons: shrink and wrap safely */
+.webdev-container .cta-btn.small,
+.webdev-container .cta-btn.ghost {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* Hover effect for steps */
+.webdev-container .how-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(7,18,51,0.06);
+}
+
+/* How we work — duplicated detailed section styles */
+.webdev-container .how-we-work-2 {
+  box-sizing: border-box;
+  line-height: 1.45;
+  padding: 28px;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-radius: 12px;
+  border: 1px solid rgba(7,18,51,0.03);
+  box-shadow: 0 10px 30px rgba(7,18,51,0.04);
+  overflow: visible;
+  margin-top: 8px;
+}
+
+/* Intro */
+.webdev-container .how-intro-2 p {
+  margin: 0 0 16px 0;
+  color: #475569;
+  font-size: 14px;
+}
+
+/* Grid */
+.webdev-container .how-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* Step card */
+.webdev-container .how-step-2 {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(7,18,51,0.03);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  min-height: 140px;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* Number circle */
+.webdev-container .step-num-2 {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background: #071233;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(3,10,18,0.08);
+}
+
+/* Step body */
+.webdev-container .step-body-2 {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.webdev-container .step-body-2 h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #071233;
+  line-height: 1.15;
+}
+.webdev-container .step-body-2 p {
+  margin: 0;
+  color: #556070;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+/* CTA row for duplicated section */
+.webdev-container .how-cta-2 {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* Buttons in duplicated section */
+.webdev-container .how-cta-2 .cta-btn.small,
+.webdev-container .how-cta-2 .cta-btn.ghost {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* Hover for duplicated steps */
+.webdev-container .how-step-2:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(7,18,51,0.06);
+}
+
+/* Responsive: stack steps and expand CTA on narrow screens */
+@media (max-width: 980px) {
+  .webdev-container .how-grid,
+  .webdev-container .how-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .webdev-container .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .webdev-container .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .webdev-container .features-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .webdev-container .how-grid,
+  .webdev-container .how-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .webdev-container .how-step,
+  .webdev-container .how-step-2 {
+    padding: 12px;
+    min-height: auto;
+  }
+  .webdev-container .step-body h3,
+  .webdev-container .step-body-2 h3 { font-size: 15px; }
+  .webdev-container .step-body p,
+  .webdev-container .step-body-2 p { font-size: 14px; }
+  .webdev-container .how-cta,
+  .webdev-container .how-cta-2 { flex-direction: column; align-items: stretch; }
+  .webdev-container .cta-btn.small,
+  .webdev-container .cta-btn.ghost { width: 100%; justify-content: center; }
+  .webdev-container .category-grid { grid-template-columns: 1fr; }
+  .webdev-container .project-grid { grid-template-columns: 1fr; }
+}
+
+
+
+
+.webdev-container .cta-btn

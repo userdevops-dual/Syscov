@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -19,26 +20,18 @@ export default function Footer() {
         </div>
         
         {/* Column 2: Services */}
-        <div className="footer-col">
-          <h5 className="footer-heading">Services</h5>
-          <ul className="footer-links">
-            <li><a href="#">Custom Software</a></li>
-            <li><a href="#">Cloud & DevOps</a></li>
-            <li><a href="#">Cybersecurity</a></li>
-            <li><a href="#">AI & Automation</a></li>
-          </ul>
-        </div>
+     <div className="footer-col">
+       <h5 className="footer-heading">Services</h5>
+        <ul className="footer-links">
+           <li><Link to="./WebDevelopment">Web Development</Link></li> 
+           <li><Link to="./AppDevelopment">App Development</Link></li>
+            <li><Link to="./SDevelopment">Custom Software Development</Link></li>
+             <li><Link to="./Uiux">UX/UI Design</Link></li>
+                </ul>
+                 </div>
 
         {/* Column 3: Resources */}
-        <div className="footer-col">
-          <h5 className="footer-heading">Resources</h5>
-          <ul className="footer-links">
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">API Reference</a></li>
-            <li><a href="#">Community Forum</a></li>
-            <li><a href="#">Support Center</a></li>
-          </ul>
-        </div>
+       
 
         {/* Column 4: Legal */}
         <div className="footer-col">
@@ -55,7 +48,6 @@ export default function Footer() {
       {/* Bottom strip */}
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Syscov. All rights reserved.</p>
-        <p className="footer-credit">Made with ❤️ by Syscov IT Solutions</p>
       </div>
     </footer>
   );

@@ -1,17 +1,34 @@
 /* Base Section Styling */
 .reviews-section {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #edf2f7, #e2e8f0);
   text-align: center;
   font-family: 'Inter', sans-serif;
+  background:white;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+margin-top:0;
+  margin: 0;       /* 👈 fixed */
+
+   border: none;       /* no border */
+  box-shadow: none; 
+}
+section {
+   background:  none; 
+   border-radius: none; 
+   padding: none; */
+   border: none;
+
+     margin: 0;       /* 👈 fixed */
+
+   box-shadow: none; 
 }
 
 /* Heading */
 .reviews-heading {
   font-size: 3rem;
   font-weight: 800;
+  margin: 0;
   margin-bottom: 60px;
-  color: #1a202c;
+    color: #000000ff;
+
   letter-spacing: -0.5px;
   animation: fadeInDown 1s ease-out;
 }
@@ -28,56 +45,47 @@
 
 /* Review Card */
 .review-card {
-  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* 👈 sab content left/top aligned */
+  justify-content: flex-start;
   backdrop-filter: blur(14px) saturate(120%);
   border-radius: 18px;
-  padding: 35px 30px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  padding: 25px 20px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   animation: fadeInUp 1s ease forwards;
   opacity: 0;
 }
 
-.review-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
-}
-
-/* Logo */
 .review-logo {
-  width: 80px;
+  width: 100%;          /* 👈 fixed size for consistency */
   height: auto;
-  margin-bottom: 25px;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
-  transition: transform 0.3s ease;
+  margin: 0 0 15px 0; 
+  justify-content:center;  /* 👈 consistent spacing below logo */
 }
 
-.review-card:hover .review-logo {
-  transform: scale(1.05);
-}
-
-/* Text */
 .review-text {
-  font-size: 1.1rem;
-  color: #2d3748;
-  line-height: 1.8;
-  margin-bottom: 25px;
-  font-weight: 400;
+  font-size: 0.95rem;
+  color: #000000ff;
+  line-height: 1.5;
+  margin: 10 0 12px 0;   /* 👈 consistent spacing below text */
+  font-weight: 200;
 }
 
-/* Author */
 .review-author {
   font-weight: 600;
-  color: #1a202c;
+  color: #00b7ff;
   font-size: 1.05rem;
-  margin-bottom: 4px;
+  justify-content:flex-end;  /* align to right */
 }
 
 .review-role {
-  font-size: 0.95rem;
-  color: #4a5568;
+  font-size: 0.9rem;
+  color: #29627b;
   font-style: italic;
+  margin: 0;            /* 👈 no extra margin */
 }
+
 
 /* Animations */
 @keyframes fadeInUp {

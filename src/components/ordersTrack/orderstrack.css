@@ -1,143 +1,105 @@
-/* Root section: deep, neutral, professional */
+/* Root section: black background */
 .orders-track {
   position: relative;
-  padding: 96px 32px;
-  background: #0b1220; /* deep charcoal navy */
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  color: #e5edf5;      /* soft off-white */
+  padding: 56px 22px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #000000ff;
   overflow: hidden;
+  background: #ffffffff;   /* black background */
+  box-shadow: none;
 }
 
-/* Container */
+/* Container: two-column layout */
 .ot-container {
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* left = text, right = boxes */
+  align-items: start;
+  gap: 40px;
 }
 
-/* Header */
+/* Left side header */
 .ot-header {
-  text-align: center;
-  margin-bottom: 56px;
+  text-align: left;
 }
 .ot-title {
   font-size: 2.6rem;
   font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 18px;
-  background: linear-gradient(90deg, #135858ff, #ffffffff); /* subtle steel → ice blue */
+  line-height: 1.3;
+  background: #000000ff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0 0 20px 0;
 }
 .ot-desc {
   font-size: 1.06rem;
-  color: #9fb1c6; /* refined slate-blue */
-  max-width: 720px;
-  margin: 0 auto 28px;
+  color: #1d1c1cff;
+  max-width: 600px;
+  margin: 0 0 28px 0;
   line-height: 1.65;
 }
+.ot-actions {
+  margin-top: 20px;
 
-/* CTA: solid professional blue */
-.ot-actions .ot-cta {
-  display: inline-block;
-  padding: 12px 24px;
-  background: #ffffffff; /* professional blue */
-  color: #000000ff;
-  font-weight: 600;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
-.ot-actions .ot-cta:hover {
-  background: #000000ff;
-    color: #ffffffff;
-  box-shadow: 0 1px 24px rgba(255, 255, 255, 0.65);
+.ot-cta{
+      text-decoration: none;
+      color:#00b3ff;
 
-  transform: translateY(-2px);
 }
 
-/* Grid */
+/* Right side grid: 2x2 uniform boxes */
 .ot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);   /* force equal rows */
   gap: 28px;
+  justify-items: stretch;               /* stretch horizontally */
+  align-items: stretch;                 /* stretch vertically */
 }
 
-/* Card: subtle glass overlay, crisp border */
+/* Card styling */
 .ot-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-  border: 1px solid rgba(199, 214, 231, 0.14); /* cool neutral border */
+  background: #111;
+  border: 1px solid rgba(199, 214, 231, 0.22);
   border-radius: 16px;
   padding: 28px 22px;
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 10px 28px rgba(5, 10, 20, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;                         /* 👈 fill grid cell */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;              /* center content vertically */
 }
 .ot-card:hover {
-  transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(5, 10, 20, 0.5);
-  border-color: rgba(199, 214, 231, 0.22);
 }
 
-/* Number: high contrast, subtle gradient—not flashy */
+/* Number + label */
 .ot-number {
-  font-size: 2.9rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, #ffffff, #dfe9f5); /* refined white → ice tint */
+  margin: 0 0 10px 0;
+  background: linear-gradient(90deg, #ffffff, #dfe9f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: -0.5px;
 }
-
-/* Label: muted, readable */
 .ot-label {
   font-size: 0.98rem;
-  color: #b6c6d9; /* muted cool neutral */
-  line-height: 1.45;
-}
-
-/* Decorative background glows: restrained, professional */
-.orders-track::before {
-  content: "";
-  position: absolute;
-  top: -120px;
-  left: -140px;
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, rgba(67, 181, 198, 0.22), transparent 70%); /* soft teal glow */
-  filter: blur(120px);
-  z-index: 0;
-}
-.orders-track::after {
-  content: "";
-  position: absolute;
-  bottom: -120px;
-  right: -140px;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(62, 124, 226, 0.22), transparent 70%); /* soft blue glow */
-  filter: blur(130px);
-  z-index: 0;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .ot-card,
-  .ot-actions .ot-cta {
-    transition: none;
-  }
+  color: #b6c6d9;
+  margin: 0;
 }
 
 /* Responsive */
 @media (max-width: 980px) {
-  .ot-title { font-size: 2.2rem; }
-  .ot-number { font-size: 2.4rem; }
+  .ot-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .ot-header { text-align: center; }
+  .ot-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  .orders-track { padding: 60px 20px; }
-  .ot-title { font-size: 1.8rem; }
-  .ot-number { font-size: 2rem; }
-  .ot-card { padding: 22px 18px; }
+  .ot-grid { grid-template-columns: 1fr; }
 }
