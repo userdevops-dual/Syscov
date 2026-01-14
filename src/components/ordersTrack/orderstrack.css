@@ -103,3 +103,29 @@
 @media (max-width: 560px) {
   .ot-grid { grid-template-columns: 1fr; }
 }
+/* ----- Fix all link underlines and style ----- */
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;   /* remove underline */
+  color: inherit;          /* inherit parent color */
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+/* Optional: hover effect for CTA buttons/links */
+.ot-cta:hover {
+  color: #00b3ff;          /* bright blue on hover */
+  transform: translateY(-2px); /* slight lift effect */
+}
+
+/* Ensure all text uses proper color */
+.orders-track, .orders-track * {
+  color: #ffffff;  /* default white text, adjust as needed */
+}
+
+/* Optional: gradient for CTA text like numbers */
+.ot-cta {
+  background:  #00b3ff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}

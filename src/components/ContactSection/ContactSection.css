@@ -1,74 +1,59 @@
 /* ===========================
    Contact Section Layout
    =========================== */
-/* Contact Section */
-/* ===========================
-   Contact Section (Main Wrapper)
-   =========================== */
 .contact-section {
   padding: 4rem 1.5rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 6rem;
+  gap: 4rem;
   flex-wrap: wrap;
-  background-color:white;
-  border: none;          /* no border */
-  box-shadow: none;      /* no shadow */
+  background-color: #f2f5f7; /* soft light background for contrast */
 }
-
-
-/* Contact Card */
-.contact-card {
-  flex: 0.5;
-  min-width: 320px;
-  max-width: 660px;
-  background: #000000ff;
-  padding: 2.5rem;
-  box-shadow: none;
-  animation: fadeInRight 0.8s ease forwards;
-
-  /* Proper border */
-  border: 2px solid white;   /* 👈 width + style + color */
-  border-radius: 12px;       /* optional: rounded corners */
-}
-
 
 /* ===========================
-   Left Video
+   Video / Left Side
    =========================== */
-/* Video Wrapper Sticky */
 .contact-video {
   flex: 1;
   min-width: 280px;
   max-width: 420px;
   position: sticky;
-  top: 2rem;   /* distance from top while scrolling */
-  align-self: flex-start;
-  height: fit-content;
+  top: 2rem;
 }
 .contact-video video {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 16px;
   object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
-
 
 /* ===========================
-   Right Form Card
+   Form Card / Right Side
    =========================== */
+.contact-card {
+  flex: 0.6;
+  min-width: 320px;
+  max-width: 700px;
+  background: #1b1f30; /* deep navy */
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  border: 2px solid #4cd1ff; /* bright cyan accent */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: fadeInRight 0.8s ease forwards;
+}
 
-
-/* Heading */
 .contact-card h2 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #00b3ff;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
+
 .contact-card p {
-  color: #00b3ff;
+  color: #cfd8dc; /* soft grey for readability */
   margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
 /* ===========================
@@ -89,21 +74,20 @@
 .form-group label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #00b3ff;
+  color: #ffffffff; /* same cyan accent */
   margin-bottom: 0.4rem;
 }
 
-/* Inputs, Select, Textarea */
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #2c2c2cff;
-  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
   font-size: 1rem;
-  color: #bcbcbcff;
-  background: #353535ff;
+  color: #e0e0e0;
+  background: #2a2e3e; /* dark grey-blue */
   transition: all 0.25s ease;
 }
 
@@ -111,111 +95,103 @@
 .form-group select:focus,
 .form-group textarea:focus {
   background: #ffffff;
-    color: #000000ff;
-
+  color: #1b1f30;
   outline: none;
+  border-color: #ffffffff;
+  box-shadow: 0 0 0 3px rgba(76,209,255,0.3);
 }
 
-/* Textarea */
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-/* Hint Text */
-.hint {
-  font-size: 0.8rem;
-    color: #00b3ffac;
-
-  margin-top: 0.3rem;
+/* ===========================
+   File Upload
+   =========================== */
+.file-dropzone {
+  border: 2px dashed #4cd1ff66;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #2a2e3e;
+  color: #cfd8dc;
+}
+.file-dropzone:hover {
+  background: #232736;
+  border-color: #4cd1ff;
+  color: #ffffff;
 }
 
-/* Phone Input */
+/* ===========================
+   Phone Input
+   =========================== */
 .phone-input {
   display: flex;
   width: 100%;
 }
 .phone-prefix {
-  background: #353535ff;
+  background: #2a2e3e;
   border-right: none;
   padding: 0 1rem;
-  border-radius: 10px 0 0 10px;
+  border-radius: 12px 0 0 12px;
   display: flex;
   align-items: center;
-  font-size: 0.95rem;
-  color: #ffffffff;
-  white-space: nowrap;
+  color: #4cd1ff;
 }
 .phone-input input {
   flex: 1;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 12px 12px 0;
+  border: 1px solid #2c2c2c;
 }
 
 /* ===========================
    Submit Button
    =========================== */
 .contact-card button {
-  width: 20%;
-  padding: 0.9rem;
+  width: auto;
+  padding: 0.85rem 1.5rem;
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 0.5rem;
-background:  #00b3ffe7;}
-
+  background: #4cd1ff; /* bright cyan */
+  align-self: flex-start;
+}
 .contact-card button:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    color:  #ffffffe7;
-  background:  #00b3ff6c;
+  background: #3bb8e6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* ===========================
    Animations
    =========================== */
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
 @keyframes fadeInRight {
   from { opacity: 0; transform: translateX(40px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 /* ===========================
-   Responsive Tweaks
+   Responsive
    =========================== */
 @media (max-width: 768px) {
   .contact-section {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 3rem;
-  }
-  .contact-video {
-    max-width: 100%;
-    margin-bottom: 2rem;
+    gap: 2rem;
   }
   .contact-card {
     max-width: 100%;
     padding: 2rem;
   }
-  .contact-card h2 {
-    font-size: 1.8rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .contact-section {
-    padding: 2.5rem 1rem;
-    gap: 2rem;
-  }
-  .contact-card {
-    padding: 1.5rem;
-  }
   .contact-card h2 {
     font-size: 1.6rem;
   }
@@ -225,40 +201,11 @@ background:  #00b3ffe7;}
   .form-group input,
   .form-group select,
   .form-group textarea {
-    padding: 0.75rem 0.9rem;
     font-size: 0.95rem;
+    padding: 0.7rem 0.85rem;
   }
   .contact-card button {
     font-size: 0.95rem;
-    padding: 0.8rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .contact-section {
-    padding: 2rem 0.8rem;
-    gap: 1.5rem;
-  }
-  .contact-video {
-    min-width: 100%;
-    max-width: 100%;
-  }
-  .contact-card {
-    min-width: 100%;
-    max-width: 100%;
-    padding: 1.2rem;
-  }
-  .contact-card h2 {
-    font-size: 1.4rem;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-size: 0.9rem;
-    padding: 0.65rem 0.75rem;
-  }
-  .contact-card button {
-    font-size: 0.9rem;
-    padding: 0.75rem;
+    padding: 0.7rem 1.2rem;
   }
 }
