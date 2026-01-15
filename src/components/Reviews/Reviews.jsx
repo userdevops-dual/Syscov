@@ -46,8 +46,13 @@ const Reviews = () => {
       <h2 className="reviews-heading">What Our Clients Say About Us</h2>
 
       <div className="reviews-slider-wrapper">
+        {/* Ambient Decorative Lighting */}
+        <div className="reviews-mesh-light left"></div>
+        <div className="reviews-mesh-light right"></div>
+
         <button className="slider-nav prev" onClick={handlePrev} aria-label="Previous review">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span className="nav-label">PREV</span>
         </button>
 
         <div className="reviews-slider-container">
@@ -57,32 +62,43 @@ const Reviews = () => {
               key={index}
               style={{ display: index === currentIndex ? 'flex' : 'none' }}
             >
+              <div className="card-glass-bg"></div>
+              <div className="luxury-accent-glow"></div>
+
               <div className="review-header">
                 <div className="review-logo-box">
                   <img src={review.logo} alt={`${review.company} logo`} className="review-logo" />
                 </div>
-                <div className="review-rating">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} viewBox="0 0 24 24" width="20" height="20" fill="#ffb800">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                    </svg>
-                  ))}
+                <div className="review-rating-group">
+                  <div className="review-rating">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} viewBox="0 0 24 24" width="20" height="20" fill="#ffb800">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="rating-status">Verified Partner</span>
                 </div>
               </div>
 
-              <p className="review-text">“{review.text}”</p>
+              <div className="review-body">
+                <div className="quote-icon-bg">“</div>
+                <p className="review-text">{review.text}</p>
+              </div>
 
               <div className="review-footer">
                 <div className="author-info">
                   <p className="review-author">{review.author}</p>
                   {review.role && <p className="review-role">{review.role}</p>}
                 </div>
+                <div className="footer-luxury-line"></div>
               </div>
             </div>
           ))}
         </div>
 
         <button className="slider-nav next" onClick={handleNext} aria-label="Next review">
+          <span className="nav-label">NEXT</span>
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
