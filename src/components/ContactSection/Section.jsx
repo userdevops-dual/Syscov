@@ -37,67 +37,72 @@ const ContactSection = () => {
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
 
-          <div className="form-group">
-            <label>Your name *</label>
-            <input type="text" name="name" placeholder="Enter your name" required />
+          <div className="form-row">
+            <div className="form-group">
+              <label>Your name *</label>
+              <input type="text" name="name" placeholder="Enter your name" required />
+            </div>
+
+            <div className="form-group">
+              <label>Your email *</label>
+              <input type="email" name="email" placeholder="Enter work email" required />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Your email *</label>
-            <input type="email" name="email" placeholder="Enter your work email" required />
-            <p className="hint">We recommend using your work email.</p>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Select Service *</label>
+              <select name="service" required>
+                <option value="">Choose a service</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile App Development">Mobile App Development</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="IT Consulting">IT Consulting</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Budget *</label>
+              <input type="text" name="budget" placeholder="Enter budget" required />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Select the service you need *</label>
-            <select name="service" required>
-              <option value="">Choose a service</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="IT Consulting">IT Consulting</option>
-            </select>
-          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Country *</label>
+              <select
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+                required
+              >
+                {countries.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.name} ({c.code})
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="form-group">
-            <label>Country *</label>
-            <select
-              value={selectedCountry}
-              onChange={(e) => setSelectedCountry(e.target.value)}
-              required
-            >
-              {countries.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.name} ({c.code})
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Phone Number *</label>
-            <div className="phone-input">
-              <span className="phone-prefix">{selectedCountry}</span>
-              <input type="tel" name="phone" placeholder="Enter phone number" required />
+            <div className="form-group">
+              <label>Phone Number *</label>
+              <div className="phone-input">
+                <span className="phone-prefix">{selectedCountry}</span>
+                <input type="tel" name="phone" placeholder="Phone number" required />
+              </div>
             </div>
           </div>
 
           <div className="form-group">
-            <label>Please describe your project *</label>
+            <label>Project Details *</label>
             <textarea
               name="message"
-              rows="4"
+              rows="3"
               placeholder="Tell us about your project..."
               required
             ></textarea>
           </div>
 
-          <div className="form-group">
-            <label>What is your budget? *</label>
-            <input type="text" name="budget" placeholder="Enter your budget" required />
-          </div>
-
-          <button type="submit">Submit</button>
+          <button type="submit" className="submit-btn">Submit</button>
         </form>
       </div>
     </section>

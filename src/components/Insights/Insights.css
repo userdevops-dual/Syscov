@@ -1,78 +1,200 @@
+/* =========================
+   Insights Section — Professional Grid
+   ========================= */
+
 .insights-section {
+  padding: 2rem 1.5rem;
+  background-color: var(--bg-body);
   text-align: center;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  border: none;
-  margin-top: 0;   /* 👈 fixed */
-  box-shadow: none;
-  background: white;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* Headings */
 .insights-heading {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0;       /* 👈 fixed */
-  color: #000000ff;
-  animation: fadeInDown 1s ease-out;
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
-
-
 
 .insights-subtitle {
-  font-size: 1.1rem;
-  color: #ffffffff;
-  margin-bottom: 30px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.5;
 }
 
+/* Grid Layout */
 .insights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
+@media (max-width: 1024px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Card Styling */
 .insight-card {
-  background: #0b1220;
-  border-radius: 16px;
-  padding: 30px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
+  background: var(--bg-dark-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 0;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 180px;
+}
+
+.insight-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+/* Dark overlay to ensure text is visible */
+.insight-card-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  transition: background 0.3s ease;
+}
+
+.insight-card:hover .insight-card-bg {
+  filter: blur(8px);
+  transform: scale(1.1);
+}
+
+.insight-card:hover .insight-card-bg::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.insight-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.25rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .insight-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
+/* Hover Glow Effect */
+.insight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.insight-card:hover::before {
+  opacity: 1;
+}
+
+/* Icon */
 .insight-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #ffffffff;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  line-height: 1;
+  backdrop-filter: blur(4px);
 }
 
+/* Step Title */
 .insight-step {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-    color: #00b7ffff;
-
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Description */
 .insight-description {
-  font-size: 1rem;
-  color: #8d8d8dff;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* Responsive */
+@media (max-width: 768px) {
+  .insights-heading {
+    font-size: 2.25rem;
+  }
+
+  .insight-card {
+    min-height: auto;
+  }
 }
 
-@keyframes fadeInDown {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
+@media (max-width: 480px) {
+  .insights-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
 
+  .insight-icon {
+    font-size: 2.5rem;
+    padding: 10px;
+  }
+
+  .insight-step {
+    font-size: 1.25rem;
+  }
+}

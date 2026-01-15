@@ -1,293 +1,196 @@
-// ContactForm.jsx
-import React, { useState, useRef } from "react";
-import "./contact.css";
+import React, { useState } from 'react';
+import './Contact.css';
 
-const countries = [
-  { name: "Pakistan", code: "+92" },
-  { name: "United States", code: "+1 (US)" },
-  { name: "United Kingdom", code: "+44" },
-  { name: "Germany", code: "+49" },
-  { name: "India", code: "+91" },
-  { name: "Canada", code: "+1 (CA)" },
-  { name: "Australia", code: "+61" },
-  { name: "France", code: "+33" },
-  { name: "Netherlands", code: "+31" },
-];
+const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
-const initialState = {
-  firstName: "",
-  lastName: "",
-  companyName: "",
-  role: "",
-  email: "",
-  countryCode: countries[0].code,
-  phone: "",
-  headcount: "",
-  revenue: "",
-  projectStage: "",
-  budget: "",
-  timeline: "",
-  description: "",
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/userme782.dev@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _subject: "New Premium Contact Form Submission",
+                    _template: "table"
+                })
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    company: '',
+                    service: '',
+                    message: ''
+                });
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Error sending message. Please check your connection.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    return (
+        <div className="sc-contact-wrap">
+            <div className="sc-contact-card">
+                <div className="sc-header">
+                    <h2>Get in Touch</h2>
+                    <p className="sc-sub">
+                        Have a project in mind? Let's discuss how Syscov can help you scale and optimize your operations with premium tech solutions.
+                    </p>
+                </div>
+
+                {submitted ? (
+                    <div style={{ textAlign: 'center', padding: '2rem' }}>
+                        <div className="success-icon" style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
+                        <h3 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '1rem', background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Success!</h3>
+                        <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.8)' }}>Thank you for reaching out. Our team will get back to you shortly.</p>
+                        <button
+                            className="sc-btn primary"
+                            style={{ marginTop: '2rem' }}
+                            onClick={() => setSubmitted(false)}
+                        >
+                            Send Another Message
+                        </button>
+                    </div>
+                ) : (
+                    <form className="sc-form" onSubmit={handleSubmit}>
+                        {/* Honeypot */}
+                        <input type="text" name="_honey" style={{ display: 'none' }} />
+                        {/* Disable Captcha */}
+                        <input type="hidden" name="_captcha" value="false" />
+
+                        <div className="sc-grid">
+                            <div className="sc-field">
+                                <label className="sc-label">Full Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="e.g. John Doe"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="sc-field">
+                                <label className="sc-label">Work Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="john@company.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="sc-field">
+                                <label className="sc-label">Phone Number</label>
+                                <div className="phone-input">
+                                    <div className="phone-prefix">+92</div>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="300 1234567"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="sc-field">
+                                <label className="sc-label">Company Name</label>
+                                <input
+                                    type="text"
+                                    name="company"
+                                    placeholder="Syscov Tech"
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="sc-field sc-span-2">
+                                <label className="sc-label">Interested Service</label>
+                                <select
+                                    name="service"
+                                    value={formData.service}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="" disabled>Select a service</option>
+                                    <option value="web-dev">Web Development</option>
+                                    <option value="cloud-infra">Cloud Infrastructure</option>
+                                    <option value="ui-ux">UI/UX Design</option>
+                                    <option value="devops">DevOps & Automation</option>
+                                    <option value="consulting">Tech Consulting</option>
+                                </select>
+                            </div>
+                            <div className="sc-field sc-span-2">
+                                <label className="sc-label">Project Details</label>
+                                <textarea
+                                    name="message"
+                                    rows="5"
+                                    placeholder="Tell us about your project or requirements..."
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
+                            </div>
+                            <div className="sc-field sc-span-2">
+                                <label className="sc-label">Upload Brief (Optional)</label>
+                                <div className="sc-dropzone">
+                                    <input type="file" className="sc-file-input" id="file-upload" />
+                                    <label htmlFor="file-upload" className="sc-drop-inner">
+                                        <strong>Click to upload</strong> or drag and drop
+                                        <div className="sc-muted">PDF, DOCX, or PNG (Max 10MB)</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="sc-actions">
+                            <button className="sc-btn primary" type="submit" disabled={isSubmitting}>
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </div>
+
+                        <div className="sc-footer">
+                            <p className="sc-small">
+                                By submitting this form, you agree to our <span style={{ color: '#6366f1', cursor: 'pointer' }}>Privacy Policy</span>.
+                            </p>
+                        </div>
+                    </form>
+                )}
+            </div>
+        </div>
+    );
 };
 
-export default function ContactForm() {
-  const [form, setForm] = useState(initialState);
-  const [errors, setErrors] = useState({});
-  const [fileName, setFileName] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const fileInputRef = useRef(null);
-
-  function validate(v) {
-    const e = {};
-    if (!v.firstName.trim()) e.firstName = "Required";
-    if (!v.lastName.trim()) e.lastName = "Required";
-    if (!v.companyName.trim()) e.companyName = "Required";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) e.email = "Invalid email";
-    if (!v.phone.trim()) e.phone = "Required";
-    if (!v.headcount) e.headcount = "Required";
-    if (!v.revenue) e.revenue = "Required";
-    if (!v.projectStage) e.projectStage = "Required";
-    if (!v.budget) e.budget = "Required";
-    if (!v.timeline) e.timeline = "Required";
-    if (!v.description.trim()) e.description = "Required";
-    return e;
-  }
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
-    setErrors((p) => ({ ...p, [name]: undefined }));
-  }
-
-  function handleFile(e) {
-    const f = e.target.files?.[0];
-    if (!f) return;
-    setFileName(f.name);
-  }
-
-  function handleDrop(e) {
-    e.preventDefault();
-    const f = e.dataTransfer.files?.[0];
-    if (!f) return;
-    setFileName(f.name);
-
-    try {
-      if (fileInputRef.current) {
-        const dt = new DataTransfer();
-        dt.items.add(f);
-        fileInputRef.current.files = dt.files;
-        handleFile({ target: { files: dt.files } });
-      }
-    } catch (err) {
-      console.warn("Could not set input.files programmatically", err);
-    }
-  }
-
-  // Allow normal browser POST when validation passes.
-  function handleSubmit(e) {
-    const v = validate(form);
-    if (Object.keys(v).length) {
-      e.preventDefault();
-      setErrors(v);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    // Let browser submit (don't call preventDefault) so file uploads work.
-    setSubmitting(true);
-  }
-
-  return (
-    <section className="sc-contact-wrap">
-      <div className="sc-contact-card">
-        <header className="sc-header">
-          <h2>Get Started With Our Free Consultation</h2>
-          <p className="sc-sub">Fill the form and we’ll review your request. Attachments supported.</p>
-        </header>
-
-        <form
-          className="sc-form"
-          method="POST"
-          action="https://formsubmit.co/userme782.dev@gmail.com" /* replace with your email if needed */
-          encType="multipart/form-data"
-          onSubmit={handleSubmit}
-          noValidate
-        >
-          {/* FormSubmit config - keep these hidden fields only */}
-          <input type="hidden" name="_subject" value="New Consultation Request" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          {/* reply-to needs to be named _replyto for formsubmit to use it */}
-          <input type="hidden" name="_replyto" value={form.email} />
-
-          <div className="sc-grid">
-            <label className="sc-field">
-              <span className="sc-label">First Name</span>
-              <input name="firstName" type="text" value={form.firstName} onChange={handleChange} required />
-              {errors.firstName && <small className="sc-error">{errors.firstName}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Last Name</span>
-              <input name="lastName" type="text" value={form.lastName} onChange={handleChange} required />
-              {errors.lastName && <small className="sc-error">{errors.lastName}</small>}
-            </label>
-
-            <label className="sc-field sc-span-2">
-              <span className="sc-label">Company Name</span>
-              <input name="companyName" type="text" value={form.companyName} onChange={handleChange} required />
-              {errors.companyName && <small className="sc-error">{errors.companyName}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Your Role</span>
-              <input name="role" type="text" value={form.role} onChange={handleChange} />
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Business Email</span>
-              <input name="email" type="email" value={form.email} onChange={handleChange} required />
-              {errors.email && <small className="sc-error">{errors.email}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Country</span>
-              <select name="countryCode" value={form.countryCode} onChange={handleChange}>
-                {countries.map((c) => (
-                  <option key={`${c.name}-${c.code}`} value={c.code}>
-                    {c.name} ({c.code})
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Phone</span>
-              <div className="phone-input">
-                <span className="phone-prefix">{form.countryCode}</span>
-                <input
-                  name="phone"
-                  type="tel"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="e.g. 3012345678"
-                  required
-                />
-              </div>
-              {errors.phone && <small className="sc-error">{errors.phone}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Current Headcount</span>
-              <select name="headcount" value={form.headcount} onChange={handleChange} required>
-                <option value="">Select</option>
-                <option>1-10</option>
-                <option>11-50</option>
-                <option>51-200</option>
-                <option>201-1000</option>
-                <option>1000+</option>
-              </select>
-              {errors.headcount && <small className="sc-error">{errors.headcount}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Annual Revenue</span>
-              <select name="revenue" value={form.revenue} onChange={handleChange} required>
-                <option value="">Select</option>
-                <option>{"< $100k"}</option>
-                <option>$100k - $1M</option>
-                <option>$1M - $10M</option>
-                <option>$10M+</option>
-              </select>
-              {errors.revenue && <small className="sc-error">{errors.revenue}</small>}
-            </label>
-
-            <fieldset className="sc-field sc-span-2">
-              <legend className="sc-label">Project Stage</legend>
-              <div className="sc-radio-row">
-                {["idea", "prototype", "development", "scale"].map((s) => (
-                  <label key={s} className="radio-label">
-                    <input
-                      type="radio"
-                      name="projectStage"
-                      value={s}
-                      checked={form.projectStage === s}
-                      onChange={handleChange}
-                      required
-                    />{" "}
-                    {s}
-                  </label>
-                ))}
-              </div>
-              {errors.projectStage && <small className="sc-error">{errors.projectStage}</small>}
-            </fieldset>
-
-            <label className="sc-field sc-span-2">
-              <span className="sc-label">Attach file (optional)</span>
-              <div
-                className="sc-dropzone"
-                onDrop={handleDrop}
-                onDragOver={(e) => e.preventDefault()}
-                onClick={() => fileInputRef.current && fileInputRef.current.click()}
-              >
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  name="attachment"
-                  className="sc-file-input"
-                  onChange={(e) => {
-                    handleFile(e);
-                  }}
-                />
-                <div className="sc-drop-inner">
-                  <strong>{fileName || "Drop file or click to upload"}</strong>
-                  <span className="sc-muted">PDF, DOCX, ZIP (max 10MB)</span>
-                </div>
-              </div>
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Budget</span>
-              <select name="budget" value={form.budget} onChange={handleChange} required>
-                <option value="">Select</option>
-                <option>{"< $10k"}</option>
-                <option>$10k - $50k</option>
-                <option>$50k - $200k</option>
-                <option>$200k+</option>
-              </select>
-              {errors.budget && <small className="sc-error">{errors.budget}</small>}
-            </label>
-
-            <label className="sc-field">
-              <span className="sc-label">Timeline</span>
-              <select name="timeline" value={form.timeline} onChange={handleChange} required>
-                <option value="">Select</option>
-                <option>1-3 months</option>
-                <option>3-6 months</option>
-                <option>6-12 months</option>
-                <option>12+ months</option>
-              </select>
-              {errors.timeline && <small className="sc-error">{errors.timeline}</small>}
-            </label>
-
-            <label className="sc-field sc-span-2">
-              <span className="sc-label">Description</span>
-              <textarea name="description" rows="6" value={form.description} onChange={handleChange} required />
-              {errors.description && <small className="sc-error">{errors.description}</small>}
-            </label>
-          </div>
-
-          <div className="sc-actions">
-            <button className="sc-btn primary" type="submit" disabled={submitting}>
-              {submitting ? "Submitting..." : "Request Consultation"}
-            </button>
-          </div>
-        </form>
-
-        <footer className="sc-footer">
-          <p className="sc-small">We respect your privacy.</p>
-        </footer>
-      </div>
-    </section>
-  );
-}
+export default Contact;

@@ -1,38 +1,52 @@
 import React from 'react';
 import './Insights.css';
 
+import discoveryImg from './discovery.png';
+import teamImg from './team.png';
+import designImg from './design.png';
+import devImg from './dev.png';
+import testingImg from './testing.png';
+import deployImg from './deploy.png';
+
 const insightsData = [
   {
     step: "Discovery & Planning",
-    description: "We  deeply understand your business goals, challenges, and requirements. Our team collaborates with you to define clear objectives and a roadmap.",
-    icon: "📊"
+    description: "We deeply understand your business goals, challenges, and requirements. Our team collaborates with you to define clear objectives and a roadmap.",
+    icon: "📊",
+    bg: discoveryImg
   },
   {
     step: "Team Division",
     description: "We assign specialized squads — frontend, backend, QA, and design — ensuring every aspect of your project is handled by experts.",
-    icon: "👥"
+    icon: "👥",
+    bg: teamImg
   },
   {
     step: "Design & Prototyping",
     description: "Our UI/UX team crafts wireframes and prototypes, validating ideas before development begins. This saves time and ensures alignment.",
-    icon: "🎨"
+    icon: "🎨",
+    bg: designImg
   },
   {
     step: "Development Sprint",
     description: "Agile sprints bring your product to life. We write clean, scalable code and keep you updated with weekly demos.",
-    icon: "⚡"
+    icon: "⚡",
+    bg: devImg
   },
   {
     step: "Testing & QA",
     description: "Rigorous testing ensures stability, performance, and security. Bugs are fixed before launch to guarantee reliability.",
-    icon: "🛡️"
+    icon: "🛡️",
+    bg: testingImg
   },
   {
     step: "Deployment & Support",
     description: "We launch your product smoothly and continue to provide support, monitoring, and improvements as your business grows.",
-    icon: "🚀"
+    icon: "🚀",
+    bg: deployImg
   }
 ];
+
 
 const Insights = () => {
   return (
@@ -44,9 +58,15 @@ const Insights = () => {
       <div className="insights-grid">
         {insightsData.map((item, index) => (
           <div className="insight-card" key={index}>
-            <div className="insight-icon">{item.icon}</div>
-            <h3 className="insight-step">{item.step}</h3>
-            <p className="insight-description">{item.description}</p>
+            <div
+              className="insight-card-bg"
+              style={{ backgroundImage: `url(${item.bg})` }}
+            />
+            <div className="insight-card-content">
+              <div className="insight-icon">{item.icon}</div>
+              <h3 className="insight-step">{item.step}</h3>
+              <p className="insight-description">{item.description}</p>
+            </div>
           </div>
         ))}
       </div>

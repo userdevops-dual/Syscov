@@ -1,7 +1,154 @@
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  font-family: 'arial', sans-serif;
+/* =========================
+   Syscov Design System & Global Styles
+   ========================= */
+
+/* Import Google Fonts: Inter (Body) & Outfit (Headings) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+
+:root {
+  /* --- Color Palette (Bright Theme) --- */
+  /* Primary - Deep Indigo & Vibrant Violet (Syscov Brand) */
+  --primary: #5b21b6;
+  --primary-hover: #4c1d95;
+  --primary-light: #8b5cf6;
+
+  /* Secondary - Emerald (Success) */
+  --secondary: #10B981;
+  --secondary-hover: #059669;
+
+  /* Accent - Brand Gradient */
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+
+  /* Neutrals - Bright Theme Premium */
+  --bg-body: #F8FAFC;
+  --bg-gradient: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  /* Subtle light fade */
+
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F8FAFC;
+
+  /* Mixed Theme Support (Dark Cards in Light Layout) */
+  --bg-dark-surface: #0F172A;
+  /* Slate 900 */
+  --bg-dark-hover: #1E293B;
+  /* Slate 800 */
+  --text-on-dark: #F1F5F9;
+  /* Slate 100 */
+
+  --text-main: #0F172A;
+  /* Slate 900 */
+  --text-muted: #64748B;
+  /* Slate 500 */
+
+  --border-light: #E2E8F0;
+  /* Slate 200 */
+
+  /* Dark Mode Support (Inverted for reference) */
+  --bg-dark: #FFFFFF;
+  --text-light: #0F172A;
+
+  /* --- Typography --- */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+
+  /* --- Spacing & Layout --- */
+  --container-width: 1440px;
+  --nav-height: 80px;
+
+  /* --- Effects (Light Mode) --- */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  /* Light Frost */
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --blur-amount: 16px;
 }
 
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  /* Parallax-like feel */
+  background-size: cover;
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- Utility Classes --- */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

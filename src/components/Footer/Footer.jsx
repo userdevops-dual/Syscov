@@ -18,20 +18,20 @@ export default function Footer() {
             <a href="#" aria-label="GitHub" className="social-link">💻</a>
           </div>
         </div>
-        
+
         {/* Column 2: Services */}
-     <div className="footer-col">
-       <h5 className="footer-heading">Services</h5>
-        <ul className="footer-links">
-           <li><Link to="./WebDevelopment">Web Development</Link></li> 
-           <li><Link to="./AppDevelopment">App Development</Link></li>
+        <div className="footer-col">
+          <h5 className="footer-heading">Services</h5>
+          <ul className="footer-links">
+            <li><Link to="./WebDevelopment">Web Development</Link></li>
+            <li><Link to="./AppDevelopment">App Development</Link></li>
             <li><Link to="./SDevelopment">Custom Software Development</Link></li>
-             <li><Link to="./Uiux">UX/UI Design</Link></li>
-                </ul>
-                 </div>
+            <li><Link to="./Uiux">UX/UI Design</Link></li>
+          </ul>
+        </div>
 
         {/* Column 3: Resources */}
-       
+
 
         {/* Column 4: Legal */}
         <div className="footer-col">

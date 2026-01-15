@@ -1,14 +1,16 @@
 /* ===========================
-   Contact Section Layout
+   Contact Section — Dark Theme
    =========================== */
 .contact-section {
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 4rem;
+  align-items: center;
+  /* Restore centered alignment */
+  gap: 2.5rem;
   flex-wrap: wrap;
-  background-color: #f2f5f7; /* soft light background for contrast */
+  background-color: var(--bg-body);
+  min-height: 100vh;
 }
 
 /* ===========================
@@ -16,44 +18,70 @@
    =========================== */
 .contact-video {
   flex: 1;
-  min-width: 280px;
-  max-width: 420px;
-  position: sticky;
-  top: 2rem;
+  min-width: 260px;
+  max-width: 340px;
+  /* Slimmer video */
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
+
+.contact-video::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: var(--accent-gradient);
+  filter: blur(30px);
+  opacity: 0.15;
+  z-index: 0;
+  border-radius: 30px;
+}
+
 .contact-video video {
   width: 100%;
-  border-radius: 16px;
+  aspect-ratio: 9/16;
+  /* Fixed slim aspect ratio */
+  border-radius: 24px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ===========================
    Form Card / Right Side
    =========================== */
 .contact-card {
-  flex: 0.6;
+  flex: 1;
   min-width: 320px;
-  max-width: 700px;
-  background: #1b1f30; /* deep navy */
-  padding: 3rem 2rem;
-  border-radius: 16px;
-  border: 2px solid #4cd1ff; /* bright cyan accent */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  animation: fadeInRight 0.8s ease forwards;
+  max-width: 650px;
+  background: var(--bg-surface);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xl);
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .contact-card h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
 }
 
 .contact-card p {
-  color: #cfd8dc; /* soft grey for readability */
-  margin-bottom: 2rem;
-  line-height: 1.5;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
 }
 
 /* ===========================
@@ -62,150 +90,151 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.25rem;
 }
 
 .form-group label {
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #ffffffff; /* same cyan accent */
-  margin-bottom: 0.4rem;
+  color: var(--text-main);
+  opacity: 0.9;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.9rem 1rem;
-  border: 1px solid #2c2c2c;
-  border-radius: 12px;
-  font-size: 1rem;
-  color: #e0e0e0;
-  background: #2a2e3e; /* dark grey-blue */
-  transition: all 0.25s ease;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: var(--bg-body);
+  transition: all 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  background: #ffffff;
-  color: #1b1f30;
   outline: none;
-  border-color: #ffffffff;
-  box-shadow: 0 0 0 3px rgba(76,209,255,0.3);
+  border-color: var(--primary);
+  background: #f8fafc;
+  /* Lighter for clean light-mixed theme */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .form-group textarea {
-  resize: vertical;
-  min-height: 120px;
+  resize: none;
+  min-height: 70px;
 }
 
 /* ===========================
-   File Upload
-   =========================== */
-.file-dropzone {
-  border: 2px dashed #4cd1ff66;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  background: #2a2e3e;
-  color: #cfd8dc;
-}
-.file-dropzone:hover {
-  background: #232736;
-  border-color: #4cd1ff;
-  color: #ffffff;
-}
-
-/* ===========================
-   Phone Input
+   Phone Input Layout
    =========================== */
 .phone-input {
   display: flex;
-  width: 100%;
+  gap: 0.4rem;
 }
+
 .phone-prefix {
-  background: #2a2e3e;
-  border-right: none;
-  padding: 0 1rem;
-  border-radius: 12px 0 0 12px;
   display: flex;
   align-items: center;
-  color: #4cd1ff;
-}
-.phone-input input {
-  flex: 1;
-  border-radius: 0 12px 12px 0;
-  border: 1px solid #2c2c2c;
+  justify-content: center;
+  padding: 0 0.75rem;
+  background: var(--bg-body);
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 55px;
 }
 
 /* ===========================
    Submit Button
    =========================== */
-.contact-card button {
-  width: auto;
-  padding: 0.85rem 1.5rem;
+.submit-btn {
+  width: 100%;
+  padding: 0.875rem;
+  background: var(--primary);
   color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #4cd1ff; /* bright cyan */
-  align-self: flex-start;
+  margin-top: 0.5rem;
+  border: none;
+  box-shadow: 0 4px 15px rgba(91, 33, 182, 0.3);
 }
-.contact-card button:hover {
-  background: #3bb8e6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+.submit-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 33, 182, 0.4);
 }
+
 
 /* ===========================
    Animations
    =========================== */
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===========================
    Responsive
    =========================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .contact-section {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    padding: 4rem 1.5rem;
   }
+
+  .contact-video {
+    position: static;
+    max-width: 100%;
+    order: -1;
+    /* Video on top if desired, or remove to keep below */
+  }
+
   .contact-card {
+    width: 100%;
     max-width: 100%;
     padding: 2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .contact-card {
+    padding: 1.5rem;
+  }
+
   .contact-card h2 {
-    font-size: 1.6rem;
-  }
-  .contact-card p {
-    font-size: 0.95rem;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-size: 0.95rem;
-    padding: 0.7rem 0.85rem;
-  }
-  .contact-card button {
-    font-size: 0.95rem;
-    padding: 0.7rem 1.2rem;
+    font-size: 1.75rem;
   }
 }

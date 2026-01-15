@@ -94,7 +94,7 @@ export default function Insights() {
           ))}
         </div>
 
-       
+
       </section>
 
       {/* Tools & Deliverables */}

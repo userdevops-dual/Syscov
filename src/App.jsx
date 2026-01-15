@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HeroSlider from "./components/Herodiv/HeroSlider";
@@ -11,70 +12,86 @@ import Section from "./components/ContactSection/Section";
 import WebDevelopment from "./components/pages/WebDevelopment";
 import AppDevelopment from "./components/pages/app development/Appdevelopment";
 import SDevelopment from "./components/pages/SDevelopment/SDevelopment";
-import Uiux from"./components/pages/Uiux/Uiux";
+import Uiux from "./components/pages/Uiux/Uiux";
 import About from "./components/pages/about/About"
 import Insight from "./components/pages/insight/Insight"
-
+import Preloader from "./components/Preloader/Preloader"; // Import Preloader
 
 import './index.css';
 import Contact from "./components/pages/contact/Contact";
 
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Show preloader to allow CSS animations to finish
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Preloader />;
+  }
+
   return (
     <Router>
       <Navbar />
-      <Routes>
-        {/* Home page */}
-        <Route
-          path="/"
-          element={
-            <>
-              <HeroSlider />
-              <Insights />
-              <ServicesHome />
-              <Reviews />
-              <OrdersTrack />
-              <Section />
-              <Footer />
-            </>
-          }
-        />
+      <div className="app-container">
+        <Routes>
+          {/* Home page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroSlider />
+                <Insights />
+                <ServicesHome />
+                <Reviews />
+                <OrdersTrack />
+                <Section />
+                <Footer />
+              </>
+            }
+          />
 
-        {/* Individual routes for each component */}
-        <Route path="/hero" element={<HeroSlider />} />
-        <Route path="/slidebar" element={<Slidebar />} />
-        <Route path="/insights" element={<Insights />} />
-        <Route path="/services" element={<ServicesHome />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/orders" element={<OrdersTrack />} />
-        <Route path="/section" element={<Section />} />
-        <Route path="/footer" element={<Footer />} />
-
-
-
-
-        {/* Services -> API Development */}
-<Route path="/WebDevelopment" element={<WebDevelopment />} />
-<Route path="/AppDevelopment" element={<AppDevelopment />} />
-<Route path="/SDevelopment" element={<SDevelopment />} />
-<Route path="/Uiux" element={<Uiux />} />
-<Route path="/about" element={<About />} />
-<Route path="/insight" element={<Insight />} />
-<Route path="/WebDevelopment/Contact" element={<Contact />} />
-<Route path="/AppDevelopment/Contact" element={<Contact />} />
-<Route path="/SDevelopment/Contact" element={<Contact />} />
-<Route path="/uiux/Contact" element={<Contact />} />
-<Route path="/Insight/Contact" element={<Contact />} />
-<Route path="/about/Contact" element={<Contact />} />
-<Route path="/Contact" element={<Contact />} />
+          {/* Individual routes for each component */}
+          <Route path="/hero" element={<HeroSlider />} />
+          <Route path="/slidebar" element={<Slidebar />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/services" element={<ServicesHome />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/orders" element={<OrdersTrack />} />
+          <Route path="/section" element={<Section />} />
+          <Route path="/footer" element={<Footer />} />
 
 
 
 
+          {/* Services -> API Development */}
+          <Route path="/WebDevelopment" element={<WebDevelopment />} />
+          <Route path="/AppDevelopment" element={<AppDevelopment />} />
+          <Route path="/SDevelopment" element={<SDevelopment />} />
+          <Route path="/Uiux" element={<Uiux />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/insight" element={<Insight />} />
+          <Route path="/WebDevelopment/Contact" element={<Contact />} />
+          <Route path="/AppDevelopment/Contact" element={<Contact />} />
+          <Route path="/SDevelopment/Contact" element={<Contact />} />
+          <Route path="/uiux/Contact" element={<Contact />} />
+          <Route path="/Insight/Contact" element={<Contact />} />
+          <Route path="/about/Contact" element={<Contact />} />
+          <Route path="/Contact" element={<Contact />} />
 
 
-      </Routes>
+
+
+
+
+        </Routes>
+      </div>
     </Router>
   );
 }

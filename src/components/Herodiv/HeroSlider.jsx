@@ -71,12 +71,17 @@ export default function HeroSlider() {
 
   return (
     <section className="hero-slider" aria-label="Hero section">
+      <div className="hero-bg-lines">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
       <div className="hero-inner">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="title-prefix">{titlePrefix}&nbsp;</span>
+            <span className="title-prefix">{titlePrefix}</span>
             <span className="title-dynamic">{displayText}</span>
-            <span className="title-cursor" aria-hidden="true">|</span>
           </h1>
 
           <p className="hero-desc">{description}</p>
