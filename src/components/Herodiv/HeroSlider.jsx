@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const slides = [
   {
-    titlePrefix: "The world is",
-    typingWords: ["creating...", "dying...", "absorbing..."],
+    titlePrefix: "The code is",
+    typingWords: [ "Developed...", "Tested...", "Deployed..."],
     description:
-      "We are a leading software development company engineering next-generation digital solutions, embedding AI and data-driven intelligence into workflows that fuel efficiency and unlock new growth opportunities.",
+      "We are fast-growing global technology partner, delivering end-to-end software engineering solutions across industries and borders. From dynamic startups to enterprise leaders, we help our clients scale faster, smarter, and stronger with modern, secure, and user-centric digital products..",
     button: "Let's Talk Business",
   },
 ];

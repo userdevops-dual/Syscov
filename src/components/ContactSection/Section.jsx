@@ -86,7 +86,6 @@ const ContactSection = () => {
             <div className="form-group">
               <label>Phone Number *</label>
               <div className="phone-input">
-                <span className="phone-prefix">{selectedCountry}</span>
                 <input type="tel" name="phone" placeholder="Phone number" required />
               </div>
             </div>

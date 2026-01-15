@@ -54,10 +54,10 @@ export default function Navbar() {
           {/* 👇 Search button replaced with icon */}
 
 
-          <button className="talk-btn"><Link to="./Contact">
+       <Link to="./Contact">   <button className="talk-btn">
             Contact Us
-          </Link> <span className="shine" />
-          </button>
+          <span className="shine" />
+          </button></Link> 
         </div>
 
         <button

@@ -5,11 +5,8 @@ import logo from "../Navbar/syscov.jpg";
 const Preloader = () => {
     const [statusIndex, setStatusIndex] = useState(0);
     const statuses = [
-        "Initializing Systems",
-        "Loading Core Modules",
-        "Optimizing UX/UI Assets",
-        "Connecting Secur-Link",
-        "Ready to Innovate"
+       
+       
     ];
 
     useEffect(() => {
@@ -40,7 +37,6 @@ const Preloader = () => {
                         <div className="loader-progress"></div>
                     </div>
                     <div className="status-container">
-                        <span className="status-text">{statuses[statusIndex]}</span>
                         <div className="status-dots">
                             <span></span><span></span><span></span>
                         </div>

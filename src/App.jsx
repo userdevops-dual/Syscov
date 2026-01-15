@@ -15,7 +15,6 @@ import SDevelopment from "./components/pages/SDevelopment/SDevelopment";
 import Uiux from "./components/pages/Uiux/Uiux";
 import About from "./components/pages/about/About"
 import Insight from "./components/pages/insight/Insight"
-import Preloader from "./components/Preloader/Preloader"; // Import Preloader
 
 import './index.css';
 import Contact from "./components/pages/contact/Contact";
@@ -25,19 +24,7 @@ import CookiePolicy from "./components/pages/legal/CookiePolicy";
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Show preloader to allow CSS animations to finish
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Preloader />;
-  }
+ 
 
   return (
     <Router>
