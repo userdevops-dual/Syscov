@@ -2,8 +2,8 @@
    Syscov Design System & Global Styles
    ========================= */
 
-/* Import Google Fonts: Inter (Body) & Outfit (Headings) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+/* Import Google Fonts: Plus Jakarta Sans (Body - Tall & Thin) & Space Grotesk (Headings) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
   /* --- Color Palette (Bright Theme) --- */
@@ -48,8 +48,8 @@
   --text-light: #0F172A;
 
   /* --- Typography --- */
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
 
   /* --- Spacing & Layout --- */
   --container-width: 1440px;
@@ -87,7 +87,11 @@ body {
   /* Parallax-like feel */
   background-size: cover;
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.7;
+  /* Increased for tall font */
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  /* Tighter for modern look */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }

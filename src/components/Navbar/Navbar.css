@@ -104,6 +104,17 @@
   width: 100%;
 }
 
+/* Dropdown Arrow Icon */
+.dropdown-arrow {
+  margin-left: 6px;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
 /* --- Dropdown Menu --- */
 .dropdown-menu {
   position: absolute;
@@ -127,8 +138,7 @@
   gap: 8px;
 }
 
-/* Show Dropdown State */
-.dropdown:hover .dropdown-menu,
+/* Show Dropdown State - Click Only */
 .dropdown-menu.show {
   opacity: 1;
   visibility: visible;

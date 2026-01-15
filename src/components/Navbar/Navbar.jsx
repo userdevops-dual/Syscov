@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi"; // 👈 Slim search icon
+import { FiSearch, FiChevronDown } from "react-icons/fi"; // 👈 Slim search icon + chevron
 import logoImg from "./syscov.jpg";
 
 export default function Navbar() {
@@ -26,6 +26,7 @@ export default function Navbar() {
         {/* OUR SERVICES */}
         <li className="nav-item dropdown" onClick={() => toggleDropdown("services")}>
           Our Services
+          <FiChevronDown className={`dropdown-arrow ${openDropdown === "services" ? "rotate" : ""}`} />
           <div className={`dropdown-menu ${openDropdown === "services" ? "show" : ""}`}>
             <ul>
               <li><Link to="./WebDevelopment">Web Development</Link></li>

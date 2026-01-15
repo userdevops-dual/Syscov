@@ -2,6 +2,22 @@
    HERO SECTION — ULTRA PREMIUM
    =============================== */
 
+/* Import original fonts for Hero only */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+
+/* Override global fonts for Hero section */
+.hero-slider,
+.hero-slider * {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.hero-slider .hero-title,
+.hero-slider h1,
+.hero-slider h2,
+.hero-slider h3 {
+  font-family: 'Outfit', sans-serif !important;
+}
+
 .hero-slider {
   width: 100%;
   min-height: 100vh;

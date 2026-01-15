@@ -1,0 +1,121 @@
+/* Legal Pages Styling - White Theme with Purple Headings */
+
+.legal-page-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    padding: 8rem 2rem 4rem;
+    font-family: var(--font-body);
+}
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 4rem 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.legal-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    /* Purple heading */
+    margin-bottom: 1rem;
+}
+
+.legal-updated {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.legal-section {
+    margin-bottom: 3rem;
+}
+
+.legal-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    /* Purple headings */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.legal-section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary);
+    /* Purple sub-headings */
+    margin: 1.5rem 0 0.75rem;
+}
+
+.legal-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.legal-section ul li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #334155;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.legal-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.contact-info {
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 3px solid var(--primary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #334155;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-page-container {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .legal-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .legal-title {
+        font-size: 2.2rem;
+    }
+
+    .legal-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .legal-section p,
+    .legal-section ul li {
+        font-size: 1rem;
+    }
+}

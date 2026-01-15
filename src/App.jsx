@@ -19,6 +19,9 @@ import Preloader from "./components/Preloader/Preloader"; // Import Preloader
 
 import './index.css';
 import Contact from "./components/pages/contact/Contact";
+import PrivacyPolicy from "./components/pages/legal/PrivacyPolicy";
+import TermsOfService from "./components/pages/legal/TermsOfService";
+import CookiePolicy from "./components/pages/legal/CookiePolicy";
 
 
 function App() {
@@ -84,6 +87,11 @@ function App() {
           <Route path="/Insight/Contact" element={<Contact />} />
           <Route path="/about/Contact" element={<Contact />} />
           <Route path="/Contact" element={<Contact />} />
+
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
 
 
 

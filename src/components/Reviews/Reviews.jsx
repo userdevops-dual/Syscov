@@ -52,7 +52,7 @@ const Reviews = () => {
 
         <button className="slider-nav prev" onClick={handlePrev} aria-label="Previous review">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          <span className="nav-label">PREV</span>
+         
         </button>
 
         <div className="reviews-slider-container">
@@ -98,7 +98,6 @@ const Reviews = () => {
         </div>
 
         <button className="slider-nav next" onClick={handleNext} aria-label="Next review">
-          <span className="nav-label">NEXT</span>
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>

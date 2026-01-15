@@ -24,43 +24,35 @@
     animation: fadeOutBg 0.8s cubic-bezier(0.7, 0, 0.3, 1) 4.5s forwards;
 }
 
-/* Ambient Background Elements */
+/* Ambient Background */
 .preloader-bg-grid {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(var(--p-border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--p-border) 1px, transparent 1px);
-    background-size: 50px 50px;
+        linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
     mask-image: radial-gradient(circle at center, black, transparent 80%);
-    opacity: 0.3;
-    z-index: 0;
 }
 
 .preloader-ambient-glow {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15), transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(50px);
-    z-index: 0;
-    animation: ambientPulse 4s ease-in-out infinite;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1), transparent 70%);
+    filter: blur(80px);
+    animation: ambientFloat 8s ease-in-out infinite;
 }
 
-/* Main Content Layout */
 .preloader-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 60px;
     z-index: 10;
-    position: relative;
 }
 
-/* Visual Center - Logo & Rings */
+/* Visual Components */
 .preloader-visual {
     position: relative;
     width: 180px;
@@ -70,72 +62,74 @@
     align-items: center;
 }
 
-.logo-wrapper {
-    width: 90px;
-    height: 90px;
-    background: #fff;
-    padding: 12px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
-    z-index: 5;
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-.preloader-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
 .logo-ring {
     position: absolute;
-    width: 130px;
-    height: 130px;
-    border: 2px solid var(--p-primary);
-    border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
-    animation: ringRotate 8s linear infinite;
-    opacity: 0.5;
+    inset: 0;
+    border: 2px solid transparent;
+    border-top-color: var(--p-primary);
+    border-right-color: var(--p-primary);
+    border-radius: 50%;
+    animation: ringRotate 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
 .logo-ring-outer {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    border: 1px dashed var(--p-secondary);
+    inset: -15px;
+    border: 1px solid var(--p-border);
     border-radius: 50%;
-    animation: ringRotateReverse 12s linear infinite;
-    opacity: 0.3;
+    border-left-color: var(--p-secondary);
+    animation: ringRotate 4s linear infinite reverse;
 }
 
-/* Typography & Progress */
+.logo-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: var(--p-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid var(--p-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+    animation: floatingLogo 3s ease-in-out infinite;
+}
+
+.preloader-logo {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+}
+
+/* Brand info */
 .preloader-info {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 20px;
 }
 
 .brand-name {
     font-size: 2.5rem;
     font-weight: 900;
-    letter-spacing: 0.5rem;
-    background: linear-gradient(to bottom, #fff, #94a3b8);
+    letter-spacing: 12px;
+    background: linear-gradient(to right, #fff, var(--p-primary), #fff);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-left: 0.5rem;
-    /* Compensate for letter-spacing */
-    animation: brandAppear 1.5s ease-out forwards;
+    animation: shine 3s linear infinite;
 }
 
+/* Progress Section */
 .loader-track {
-    width: 280px;
-    height: 2px;
+    width: 300px;
+    height: 4px;
     background: var(--p-border);
-    border-radius: 4px;
-    position: relative;
+    border-radius: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 .loader-progress {
@@ -143,38 +137,38 @@
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, var(--p-primary), var(--p-secondary));
-    box-shadow: 0 0 10px var(--p-primary);
+    box-shadow: 0 0 15px var(--p-primary);
     animation: progressFill 4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .status-container {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    height: 20px;
-    /* Fixed height for text swaps */
+    gap: 12px;
+    height: 24px;
 }
 
 .status-text {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--p-primary);
     text-transform: uppercase;
-    letter-spacing: 0.15rem;
-    color: var(--p-secondary);
-    opacity: 0.8;
+    letter-spacing: 2px;
+    min-width: 200px;
+    text-align: center;
 }
 
 .status-dots {
     display: flex;
-    gap: 3px;
+    gap: 4px;
 }
 
 .status-dots span {
     width: 4px;
     height: 4px;
-    background: var(--p-secondary);
+    background: var(--p-primary);
     border-radius: 50%;
-    animation: dotPulse 1.4s infinite;
+    animation: dotPulse 1.5s infinite;
 }
 
 .status-dots span:nth-child(2) {
@@ -185,13 +179,13 @@
     animation-delay: 0.4s;
 }
 
-/* Corner Decorations */
+/* Decorations */
 .corner-decoration {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     border: 1px solid var(--p-border);
-    opacity: 0.2;
+    pointer-events: none;
 }
 
 .top-left {
@@ -222,22 +216,42 @@
     border-top: none;
 }
 
-/* Keyframes */
-@keyframes ambientPulse {
-
-    0%,
-    100% {
-        opacity: 0.15;
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    50% {
-        opacity: 0.25;
-        transform: translate(-50%, -50%) scale(1.1);
+/* Animations Keyframes */
+@keyframes ringRotate {
+    to {
+        transform: rotate(360deg);
     }
 }
 
-@keyframes logoFloat {
+@keyframes progressFill {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes ambientFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -30px);
+    }
+}
+
+@keyframes floatingLogo {
 
     0%,
     100% {
@@ -249,63 +263,17 @@
     }
 }
 
-@keyframes ringRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes ringRotateReverse {
-    0% {
-        transform: rotate(360deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes brandAppear {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-        filter: blur(5px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-@keyframes progressFill {
-    0% {
-        width: 0%;
-        transform: translateX(-100%);
-    }
-
-    100% {
-        width: 100%;
-        transform: translateX(0);
-    }
-}
-
 @keyframes dotPulse {
 
     0%,
     100% {
+        transform: scale(1);
         opacity: 0.3;
-        transform: scale(0.8);
     }
 
     50% {
+        transform: scale(1.5);
         opacity: 1;
-        transform: scale(1.2);
     }
 }
 
@@ -317,39 +285,25 @@
 
     100% {
         opacity: 0;
-        transform: scale(1.1);
+        transform: scale(1.05);
+        pointer-events: none;
         visibility: hidden;
     }
 }
 
 /* Responsive */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .loader-track {
+        width: 200px;
+    }
+
     .brand-name {
         font-size: 1.8rem;
-        letter-spacing: 0.3rem;
+        letter-spacing: 6px;
     }
 
-    .preloader-visual {
-        width: 140px;
-        height: 140px;
-    }
-
-    .logo-wrapper {
-        width: 70px;
-        height: 70px;
-    }
-
-    .logo-ring {
-        width: 100px;
-        height: 100px;
-    }
-
-    .logo-ring-outer {
-        width: 120px;
-        height: 120px;
-    }
-
-    .loader-track {
-        width: 220px;
+    .corner-decoration {
+        width: 50px;
+        height: 50px;
     }
 }

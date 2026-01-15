@@ -189,6 +189,30 @@
   white-space: nowrap;
 }
 
+.phone-prefix-select {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 14px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 130px;
+}
+
+.phone-prefix-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 4px rgba(91, 33, 182, 0.15);
+}
+
+.phone-prefix-select option {
+  background-color: #0b0f19;
+  color: white;
+}
+
 /* Radio Buttons */
 .sc-radio-row {
   display: flex;

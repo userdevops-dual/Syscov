@@ -6,10 +6,26 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
+        country: 'Pakistan',
         company: '',
         service: '',
         message: ''
     });
+
+    // Country to code mapping
+    const countryCodeMap = {
+        'United States': '+1',
+        'Canada': '+1',
+        'United Kingdom': '+44',
+        'Australia': '+61',
+        'India': '+91',
+        'Pakistan': '+92',
+        'UAE': '+971',
+        'Saudi Arabia': '+966',
+        'Germany': '+49',
+        'France': '+33',
+        'China': '+86'
+    };
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
@@ -45,6 +61,7 @@ const Contact = () => {
                     name: '',
                     email: '',
                     phone: '',
+                    country: 'Pakistan',
                     company: '',
                     service: '',
                     message: ''
@@ -114,9 +131,30 @@ const Contact = () => {
                                 />
                             </div>
                             <div className="sc-field">
+                                <label className="sc-label">Country</label>
+                                <select
+                                    name="country"
+                                    value={formData.country}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="United States">United States</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="India">India</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="UAE">UAE</option>
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="France">France</option>
+                                    <option value="China">China</option>
+                                </select>
+                            </div>
+                            <div className="sc-field">
                                 <label className="sc-label">Phone Number</label>
                                 <div className="phone-input">
-                                    <div className="phone-prefix">+92</div>
+                                    <div className="phone-prefix">{countryCodeMap[formData.country]}</div>
                                     <input
                                         type="tel"
                                         name="phone"
