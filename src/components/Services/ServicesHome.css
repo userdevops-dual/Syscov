@@ -128,8 +128,9 @@
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  /* Force square shape */
+  min-height: 300px;
+  /* Restore consistent height */
+  /* aspect-ratio removed for natural fit */
   transition: transform 320ms cubic-bezier(.2, .9, .3, 1), box-shadow 320ms ease, border-color 320ms ease;
   color: var(--text-main);
   box-shadow: var(--shadow-sm);
@@ -174,8 +175,8 @@
   display: -webkit-box;
   line-clamp: 4;
   -webkit-box-orient: vertical;
-  line-clamp: 3;
-  /* Limit text to fit square */
+  /* line-clamp removed to allow full text or larger clamp */
+  overflow: hidden;
 }
 
 /* Bottom area (CTA) */
