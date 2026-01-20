@@ -1,6 +1,6 @@
 // src/components/pages/AppDevelopment.jsx
 import React from "react";
-import "./AppDevelopment.css";
+import "./Appdevelopment.css";
 import { FiSmartphone, FiServer, FiLayers, FiZap, FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 

@@ -258,3 +258,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .appdev-container {
+    padding: 4rem 1.25rem;
+    gap: 3rem;
+  }
+
+  .appdev-container .hero,
+  .appdev-container .card-glass,
+  .appdev-container .process-timeline,
+  .appdev-container .show-grid {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appdev-container {
+    padding: 3.5rem 1rem;
+  }
+
+  .appdev-container .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .appdev-container .section-title {
+    font-size: 1.75rem;
+  }
+}

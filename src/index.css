@@ -43,9 +43,9 @@
   --border-light: #E2E8F0;
   /* Slate 200 */
 
-  /* Dark Mode Support (Inverted for reference) */
-  --bg-dark: #FFFFFF;
-  --text-light: #0F172A;
+  /* Dark Mode Support (used when theme = dark) */
+  --bg-dark: #020617;
+  --text-light: #E2E8F0;
 
   /* --- Typography --- */
   --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -94,6 +94,7 @@ body {
   /* Tighter for modern look */
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1,
@@ -131,6 +132,45 @@ button {
   padding: 0 1.5rem;
 }
 
+/* =========================
+   Dark Theme (data-theme="dark")
+   ========================= */
+:root[data-theme="dark"] {
+  --bg-body: #020617;
+  --bg-gradient: radial-gradient(circle at top, #020617 0%, #020617 40%, #020617 100%);
+  --bg-surface: #020617;
+  --bg-surface-hover: #020617;
+
+  --bg-dark-surface: #020617;
+  --bg-dark-hover: #020617;
+  --text-on-dark: #e2e8f0;
+
+  --text-main: #e5e7eb;
+  --text-muted: #cbd5e1;
+  /* Lighter slate for better visibility */
+  --border-light: #1f2937;
+
+  --glass-bg: rgba(15, 23, 42, 0.82);
+  --glass-border: rgba(30, 64, 175, 0.7);
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--bg-body);
+  background-image: radial-gradient(circle at top, #020617 0%, #020617 40%, #020617 100%);
+  color: var(--text-main);
+}
+
+/* Small-screen global tweaks */
+@media (max-width: 480px) {
+  body {
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 .text-primary {
   color: var(--primary);
 }
@@ -155,4 +195,43 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* ===============================
+   Ultra-Small Screen Support (320px)
+   =============================== */
+@media (max-width: 380px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
 }

@@ -257,3 +257,32 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .webdev-container {
+    padding: 4rem 1.25rem;
+    gap: 3rem;
+  }
+
+  .webdev-container .hero,
+  .webdev-container .how-we-work,
+  .webdev-container .how-we-work-2,
+  .webdev-container .cta {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .webdev-container {
+    padding: 3.5rem 1rem;
+  }
+
+  .webdev-container .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .webdev-container .section-title {
+    font-size: 1.75rem;
+  }
+}

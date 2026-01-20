@@ -35,8 +35,9 @@
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1200px;
+  gap: 1.25rem;
+  max-width: 1000px;
+  /* Reduced for premium compact feel */
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -108,7 +109,8 @@
 .insight-card-content {
   position: relative;
   z-index: 2;
-  padding: 1.25rem;
+  padding: 1.15rem;
+  /* Slightly reduced padding */
   width: 100%;
   height: 100%;
   display: flex;
@@ -143,7 +145,8 @@
 
 /* Icon */
 .insight-icon {
-  font-size: 2rem;
+  font-size: 1.75rem;
+  /* Scaled icon down */
   margin-bottom: 0.75rem;
   display: inline-block;
   padding: 6px;
@@ -156,7 +159,8 @@
 /* Step Title */
 .insight-step {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  /* Scaled down slightly */
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.5rem;

@@ -1,0 +1,79 @@
+.sc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 2000;
+  background: transparent;
+  pointer-events: none;
+}
+
+.sc-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22d3ee, #6366f1, #a855f7);
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.55);
+  transition: width 300ms ease-out;
+}
+
+.sc-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.12);
+  transform: translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+  z-index: 2000;
+}
+
+.sc-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sc-to-top:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.sc-to-top:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(91, 33, 182, 0.18), 0 14px 40px rgba(2, 6, 23, 0.12);
+}
+
+.sc-to-top__icon {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .sc-to-top {
+    right: 14px;
+    bottom: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sc-progress__bar,
+  .sc-to-top {
+    transition: none;
+  }
+}

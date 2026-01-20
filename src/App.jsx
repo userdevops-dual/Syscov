@@ -10,7 +10,7 @@ import Reviews from "./components/Reviews/Reviews";
 import Insights from "./components/Insights/Insights";
 import Section from "./components/ContactSection/Section";
 import WebDevelopment from "./components/pages/WebDevelopment";
-import AppDevelopment from "./components/pages/app development/Appdevelopment";
+import AppDevelopment from "./components/pages/appdevelopment/Appdevelopment";
 import SDevelopment from "./components/pages/SDevelopment/SDevelopment";
 import Uiux from "./components/pages/Uiux/Uiux";
 import About from "./components/pages/about/About"
@@ -21,6 +21,8 @@ import Contact from "./components/pages/contact/Contact";
 import PrivacyPolicy from "./components/pages/legal/PrivacyPolicy";
 import TermsOfService from "./components/pages/legal/TermsOfService";
 import CookiePolicy from "./components/pages/legal/CookiePolicy";
+import ScrollProgress from "./components/FutureUI/ScrollProgress";
+import StickyTalkCTA from "./components/FutureUI/StickyTalkCTA";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
 
   return (
     <Router>
+      <ScrollProgress />
+      <StickyTalkCTA />
       <Navbar />
       <div className="app-container">
         <Routes>

@@ -114,6 +114,10 @@
   line-height: 1.2;
 }
 
+:root[data-theme="dark"] .title-dynamic {
+  color: var(--primary-light);
+}
+
 /* Optional: Add a subtle decoration or glow to the dynamic outline if needed later */
 .title-dynamic::after {
   content: initial;
@@ -132,7 +136,7 @@
 .hero-desc {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  color: #475569;
+  color: var(--text-muted);
   line-height: 1.7;
   max-width: 580px;
   margin-bottom: 2.5rem;
@@ -158,15 +162,16 @@
   z-index: 1;
   background: var(--text-main);
   /* Solid Slate/Black */
-  color: #fff;
+  color: var(--bg-body);
+  /* Invert text color based on background */
   border: 1px solid var(--text-main);
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
 }
 
 .hero-btn:hover {
   transform: translateY(-3px);
-  background: #1e293b;
-  color: #fff;
+  background: var(--primary);
+  color: white;
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
 }
 
@@ -353,9 +358,25 @@
     padding: 0 1.25rem;
   }
 
+}
+
+@media (max-width: 375px) {
+  .hero-slider {
+    padding-top: calc(var(--nav-height) + 1rem);
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+
   .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
     width: 100%;
-    justify-content: center;
-    padding: 14px 24px;
   }
 }

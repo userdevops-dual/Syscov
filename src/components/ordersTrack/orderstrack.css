@@ -61,6 +61,11 @@
   transition: all 0.2s ease;
 }
 
+:root[data-theme="dark"] .ot-cta {
+  color: #fff;
+  border-color: #fff;
+}
+
 .ot-cta a {
   color: inherit;
   text-decoration: none;

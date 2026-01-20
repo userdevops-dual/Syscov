@@ -9,7 +9,7 @@
   padding: 0;
   border: none;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: #ffffff;
+  background: var(--bg-body);
   box-shadow: none;
 }
 
@@ -55,12 +55,12 @@
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.05;
-  color: #000;
+  color: var(--text-main);
   margin: 0;
 }
 
 .gradient-text {
-  background: #000;
+  background: var(--text-main);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -80,7 +80,7 @@
 
 .get-in-touch {
   display: inline-block;
-  color: #000;
+  color: var(--text-main);
   font-weight: 600;
   text-decoration: none;
   padding: 10px 16px;
@@ -90,7 +90,7 @@
 
 .get-in-touch:hover,
 .get-in-touch:focus {
-  color: #053245;
+  color: var(--primary);
   transform: translateY(-3px);
   outline: none;
 }
@@ -98,10 +98,16 @@
 /* Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  /* Force 4 columns */
+  gap: 24px;
+  /* Reduced gap for compact feel */
   margin-bottom: 60px;
   position: relative;
+  max-width: 1000px;
+  /* Reduced max-width as requested */
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1;
   align-items: stretch;
   /* ensure grid items stretch to same row height */
@@ -130,7 +136,7 @@
 .service-card:focus-within {
   transform: translateY(-8px);
   box-shadow: 0 14px 38px rgba(2, 6, 23, 0.6);
-  border-color: #00b3ff;
+  border-color: var(--primary);
 }
 
 /* Top area (title + text) — make it flexible so CTAs align */
@@ -146,7 +152,7 @@
 .service-card h3 {
   font-size: 1.4rem;
   margin: 0 0 8px 0;
-  color: #00b3ff;
+  color: var(--primary);
   line-height: 1.2;
   /* Reserve vertical space so headings align across cards */
   min-height: 3.0rem;
@@ -226,6 +232,8 @@
   .services-grid {
     gap: 28px;
     margin-bottom: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 cols on medium screens */
   }
 
   .service-card {
