@@ -115,20 +115,23 @@
 
 /* Card: flex column so CTA stays at bottom */
 .service-card {
-  background: #0b1220;
-  /* dark card */
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 28px;
-  border-radius: 14px;
+  background: var(--bg-dark-surface);
+  /* theme variable for correct color */
+  border: 1px solid var(--glass-border);
+  padding: 24px;
+  /* Adjusted padding */
+  border-radius: 20px;
+  /* Slightly more rounded */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 18px;
-  min-height: 300px;
-  /* ensures consistent card height */
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* Force square shape */
   transition: transform 320ms cubic-bezier(.2, .9, .3, 1), box-shadow 320ms ease, border-color 320ms ease;
-  color: #e6eef8;
-  box-shadow: none;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Hover / focus */
@@ -170,7 +173,8 @@
   display: -webkit-box;
   line-clamp: 4;
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-clamp: 3;
+  /* Limit text to fit square */
 }
 
 /* Bottom area (CTA) */
